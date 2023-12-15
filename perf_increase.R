@@ -8,6 +8,7 @@
 library(tidyverse)
 library(googlesheets4)
 library(glue)
+library(chroma)
 
 times_100 <- function(x){x * 100}
 
@@ -18,10 +19,10 @@ dataset <- "zooscan"
 ## Read data ----
 #--------------------------------------------------------------------------#
 # Spreadsheet for classification reports
-ss <- "https://docs.google.com/spreadsheets/d/1Y1_sOIpWDA7S9ABdzZxysHKTG5Wjk_VQsXrb3NAZZuI/edit#gid=0"
+ss <- "https://docs.google.com/spreadsheets/d/11_I-CZEVQTQqMwLuAI0N6m1RX8nWKE9ml8AgPtaCTcc/edit#gid=0"
 
 # Sheet with taxonomy
-taxo <- read_sheet("https://docs.google.com/spreadsheets/d/1C57EPnnOljtFKWrkdvQj2-UNc0bg0PMHb6km0YhaGSw/edit#gid=0", sheet = dataset) %>% 
+taxo <- read_sheet(ss, sheet = dataset) %>% 
   select(taxon, grouped = level2, plankton)
 
 # Read classification reports for given dataset
@@ -77,9 +78,12 @@ df_g <- df_g %>%
 # Generate nice colours
 my_cols <- c(
   "Mob + MLP600" = "#3a62bfff",
-  "Eff S + MLP600" = "#77d1daff",
-  "Mob + PCA + RF" = "#b0aaf8ff"
+  #"Eff S + MLP600" = "#77d1daff",
+  "Eff S + MLP600" = darken("#77d1daff"),
+  #"Mob + PCA + RF" = "#b0aaf8ff"
+  "Mob + PCA + RF" = darken("#b0aaf8ff")
 )
+
 
 
 # Prepare nice names for models
@@ -119,11 +123,11 @@ df_all %>%
     )) +
   scale_y_continuous(breaks = c(0, 0.01, 0.02)) +
   theme_classic() +
-  theme(strip.background = element_blank(), legend.text.align = 0, legend.position = "bottom") +
+  theme(strip.background = element_blank(), legend.text.align = 0, legend.position = "bottom", text = element_text(family = "Helvetica")) +
   facet_grid(rows = vars(level), cols = vars(metric)) +
   labs(x = "Point increase in metric, from RF on native features", y = "Estimated probability density", color = "Model") +
   guides(colour = guide_legend(override.aes = list(linetype = override.linetype))) +
-  scale_linetype(guide = FALSE)
+  scale_linetype(guide = "none")
 ggsave(file = "figures/figure_5.png", width = 180, height = 100, unit = "mm", dpi = 300, bg = "white")
 
 

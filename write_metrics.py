@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+
 #--------------------------------------------------------------------------#
 # Project: plankton_classif
 # Script purpose: Compute performance metrics for all models on all datasets.
@@ -18,6 +20,7 @@ parser.add_argument('--predictions_path', type=str, help='Path to predictions')
 args = parser.parse_args()
 
 predictions_path = args.predictions_path
+predictions_path = '/home/tpanaiotis/complex/share/classif_results/predictions'
 
 # Create dir to store reports
 save_dir = 'perf'
@@ -29,10 +32,11 @@ os.makedirs(save_dir, exist_ok=True)
 df_all = pd.DataFrame()
 
 
-# List datasets
+# List datasets and groups for each dataset
 datasets = ['flowcam', 'ifcb', 'isiis', 'uvp6', 'zoocam', 'zooscan']
+# Sheet is "Taxonomy match"
+sheet_id = '11_I-CZEVQTQqMwLuAI0N6m1RX8nWKE9ml8AgPtaCTcc'
 
-sheet_id = '1C57EPnnOljtFKWrkdvQj2-UNc0bg0PMHb6km0YhaGSw'
 
 for dataset in datasets:
     
@@ -163,6 +167,6 @@ for file in files:
 # Convert to dataframe
 metrics = pd.DataFrame(metrics)
 print('Saving results')
-metrics.to_csv('classification_performance/prediction_metrics.csv', index = False)
+metrics.to_csv(os.path.join(save_dir,'prediction_metrics.csv'), index = False)
 
 

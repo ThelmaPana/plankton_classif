@@ -8,6 +8,7 @@
 library(tidyverse)
 
 
+
 # Path to save figures
 dir.create("figures", showWarnings = FALSE)
 
@@ -110,7 +111,7 @@ df %>%
     #axis.text.x = element_text(angle = 45, vjust = 1, hjust=1),
     panel.grid.major.x = element_blank(),
     strip.background = element_rect(colour="white", fill="white"),
-    text = element_text(size = 10)
+    text = element_text(size = 10, family = "Helvetica")
   )
 ggsave(file = "figures/figure_2.png", width = 180, height = 100, unit = "mm", dpi = 300, bg = "white")
 
@@ -140,7 +141,7 @@ df %>%
     strip.background = element_rect(colour="white", fill="white"),
     panel.grid.major.x = element_blank(),
     legend.position = "bottom",
-    text = element_text(size = 10)
+    text = element_text(size = 10, family = "Helvetica")
   ) 
 ggsave(file = "figures/figure_3.png", width = 180, height = 100, unit = "mm", dpi = 300, bg = "white")
 
@@ -166,6 +167,6 @@ df %>%
     strip.background = element_rect(colour="white", fill="white"),
     panel.grid.major.x = element_blank(),
     legend.position = "bottom",
-    text = element_text(size = 10)
+    text = element_text(size = 10, family = "Helvetica")
   ) 
 ggsave(file = "figures/figure_4.png", width = 180, height = 100, unit = "mm", dpi = 300, bg = "white")

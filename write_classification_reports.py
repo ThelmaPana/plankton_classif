@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+
 #--------------------------------------------------------------------------#
 # Project: plankton_classif
 # Script purpose: Generate classification reports.
@@ -18,6 +20,7 @@ parser.add_argument('--predictions_path', type=str, help='Path to predictions')
 args = parser.parse_args()
 
 predictions_path = args.predictions_path
+#predictions_path = '/home/tpanaiotis/complex/share/classif_results/predictions'
 
 # Create dir to store reports
 save_dir = 'perf'
@@ -27,10 +30,10 @@ os.makedirs(save_dir, exist_ok=True)
 # Initiate empty dataframe
 df_all = pd.DataFrame()
 
-# List datasets
+# List datasets and groups for each dataset
 datasets = ['flowcam', 'ifcb', 'isiis', 'uvp6', 'zoocam', 'zooscan']
-
-sheet_id = '1C57EPnnOljtFKWrkdvQj2-UNc0bg0PMHb6km0YhaGSw'
+# Sheet is "Taxonomy match"
+sheet_id = '11_I-CZEVQTQqMwLuAI0N6m1RX8nWKE9ml8AgPtaCTcc'
 
 for dataset in datasets:
     
@@ -115,6 +118,7 @@ for dataset in datasets:
         
         # Get classes for this dataset
         df_ref = df_all[df_all['dataset'] == dataset].reset_index(drop = True).drop('dataset', axis = 1)
+        df_ref_g = df_ref[['grouped', 'plankton']].drop_duplicates().reset_index(drop = True).rename(columns = {'grouped':'taxon'})
         
         # Plankton classes
         plankton_classes = list(set(df_ref[df_ref['plankton']]['taxon'].tolist()))
@@ -176,9 +180,21 @@ for dataset in datasets:
         else:
             cr_g_all = pd.merge(cr_g_all, cr_g)
     
+    # Convert plankton attribute to str
+    df_ref['plankton'] = df_ref['plankton'].replace({True: 'True', False: 'False'})
+    df_ref_g['plankton'] = df_ref_g['plankton'].replace({True: 'True', False: 'False'})
     
-    # Add grouped classes for detailed report
-    cr_all = pd.merge(cr_all, df_ref[['taxon', 'grouped']])
+    # Add grouped classes for detailed report and sort 
+    cr_all = pd.merge(df_ref, cr_all)
+    cr_g_all = pd.merge(df_ref_g, cr_g_all)
+
+    # Sort grouped classes and then taxon
+    cr_all = cr_all.sort_values(by = ['plankton', 'grouped', 'taxon'], ascending = [False, True, True], key=lambda x: x.str.lower()).reset_index(drop = True)
+    cr_g_all = cr_g_all.sort_values(by = ['plankton','taxon'], ascending = [False, True], key=lambda x: x.str.lower()).reset_index(drop = True)
+
+    # Drop plankton column
+    #cr_all = cr_all.drop('plankton', axis = 1)
+    #cr_g_all = cr_g_all.drop('plankton', axis = 1)
     
     # Save classification reports
     print(f'Saving reports for {dataset}')
