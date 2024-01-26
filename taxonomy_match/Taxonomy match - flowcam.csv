@@ -1,0 +1,94 @@
+lineage,taxon,level1,level2,plankton
+/detritus,detritus,detritus,detritus,FALSE
+/living/Bacteria/Cyanobacteria/cyano a,cyano a,cyano a,Bacteria,TRUE
+/living/Bacteria/Cyanobacteria/cyano b,cyano b,cyano b,Bacteria,TRUE
+/living/Bacteria/Cyanobacteria/Cyanophyceae/UCYNA like,UCYNA like,UCYNA like,Bacteria,TRUE
+/living/Bacteria/Oscillatoriales/Katagnymene/Katagnymene spiralis,Katagnymene spiralis,Katagnymene spiralis,Bacteria,TRUE
+/living/Bacteria/Proteobacteria/Cyanobacteria/Nostocales/Nostocaceae/Richelia,Richelia,Richelia,Bacteria,TRUE
+/living/Eukaryota/Harosa/Alveolata/Ciliophora,Ciliophora,Ciliophora,Ciliophora,TRUE
+/living/Eukaryota/Harosa/Alveolata/Ciliophora/Intramacronucleata/Spirotrichea/Choreotrichia/Cyttarocylididae,Cyttarocylididae,Cyttarocylididae,Cyttarocylididae,TRUE
+/living/Eukaryota/Harosa/Alveolata/Ciliophora/Intramacronucleata/Spirotrichea/Choreotrichia/Dictyocystidae/Codonaria,Codonaria,Codonaria,Dictyocystidae,TRUE
+/living/Eukaryota/Harosa/Alveolata/Ciliophora/Intramacronucleata/Spirotrichea/Choreotrichia/Dictyocystidae/Dictyocysta,Dictyocysta,Dictyocysta,Dictyocystidae,TRUE
+/living/Eukaryota/Harosa/Alveolata/Ciliophora/Intramacronucleata/Spirotrichea/Choreotrichia/Metacylididae/Metacylis,Metacylis,Metacylis,Metacylididae,TRUE
+/living/Eukaryota/Harosa/Alveolata/Ciliophora/Intramacronucleata/Spirotrichea/Choreotrichia/Rhabdonellidae,Rhabdonellidae,Rhabdonellidae,Rhabdonellidae,TRUE
+/living/Eukaryota/Harosa/Alveolata/Ciliophora/Intramacronucleata/Spirotrichea/Choreotrichia/Tintinnidiidae/Amphorides,Amphorides,Rhabdonellidae,Rhabdonellidae,TRUE
+/living/Eukaryota/Harosa/Alveolata/Ciliophora/Intramacronucleata/Spirotrichea/Choreotrichia/Tintinnidiidae/Eutintinnus,Eutintinnus,Eutintinnus,Tintinnidiidae,TRUE
+/living/Eukaryota/Harosa/Alveolata/Ciliophora/Intramacronucleata/Spirotrichea/Choreotrichia/Tintinnidiidae/Salpingella,Salpingella,Salpingella,Tintinnidiidae,TRUE
+/living/Eukaryota/Harosa/Alveolata/Ciliophora/Intramacronucleata/Spirotrichea/Choreotrichia/Tintinnidiidae/Steenstrupiella,Steenstrupiella,Steenstrupiella,Tintinnidiidae,TRUE
+/living/Eukaryota/Harosa/Alveolata/Ciliophora/Intramacronucleata/Spirotrichea/Choreotrichia/Tintinnidiidae/Tintinnidae X/Poroecus,Poroecus,Poroecus,Tintinnidiidae,TRUE
+/living/Eukaryota/Harosa/Alveolata/Ciliophora/Intramacronucleata/Spirotrichea/Choreotrichia/Undellidae,Undellidae,Undellidae,Undellidae,TRUE
+/living/Eukaryota/Harosa/Alveolata/Ciliophora/Intramacronucleata/Spirotrichea/Choreotrichia/Xystonellidae,Xystonellidae,Xystonellidae,Xystonellidae,TRUE
+/living/Eukaryota/Harosa/Alveolata/Ciliophora/Intramacronucleata/Spirotrichea/Codonellopsis,Codonellopsis,Codonellopsis,Tintinnidiidae,TRUE
+/living/Eukaryota/Harosa/Alveolata/Ciliophora/Intramacronucleata/Spirotrichea/Tintinnina,Tintinnina,Tintinnina,Tintinnina,TRUE
+/living/Eukaryota/Harosa/Alveolata/Ciliophora/part,part<Ciliophora,part_Ciliophora,part_Ciliophora,TRUE
+/living/Eukaryota/Harosa/Alveolata/Myzozoa/Holodinophyta/Dinophyceae,Dinophyceae,Dinophyceae,Dinophyceae,TRUE
+/living/Eukaryota/Harosa/Alveolata/Myzozoa/Holodinophyta/Dinophyceae/Dinophysiales/Dinophysaceae Oxyphysaceae/Dinophysis,Dinophysis,Dinophysis,Dinophysiales,TRUE
+/living/Eukaryota/Harosa/Alveolata/Myzozoa/Holodinophyta/Dinophyceae/Dinophysiales/Dinophysaceae Oxyphysaceae/Ornithocercus,Ornithocercus,Ornithocercus,Dinophysiales,TRUE
+/living/Eukaryota/Harosa/Alveolata/Myzozoa/Holodinophyta/Dinophyceae/Gonyaulacales/Ceratiaceae/Neoceratium/Neoceratium furca,Neoceratium furca,Neoceratium furca,Gonyaulacales,TRUE
+/living/Eukaryota/Harosa/Alveolata/Myzozoa/Holodinophyta/Dinophyceae/Gonyaulacales/Ceratiaceae/Neoceratium/Neoceratium fusus,Neoceratium fusus,Neoceratium fusus,Gonyaulacales,TRUE
+/living/Eukaryota/Harosa/Alveolata/Myzozoa/Holodinophyta/Dinophyceae/Gonyaulacales/Ceratiaceae/Neoceratium/Neoceratium pentagonum,Neoceratium pentagonum,Neoceratium pentagonum,Gonyaulacales,TRUE
+/living/Eukaryota/Harosa/Alveolata/Myzozoa/Holodinophyta/Dinophyceae/Gonyaulacales/Ceratocoryaceae/Ceratocorys,Ceratocorys,Ceratocorys,Gonyaulacales,TRUE
+/living/Eukaryota/Harosa/Alveolata/Myzozoa/Holodinophyta/Dinophyceae/Gonyaulacales/Cladopyxidaceae/Cladopyxis,Cladopyxis,Cladopyxis,Gonyaulacales,TRUE
+/living/Eukaryota/Harosa/Alveolata/Myzozoa/Holodinophyta/Dinophyceae/Gonyaulacales/Neoceratium,Neoceratium,Neoceratium,Gonyaulacales,TRUE
+/living/Eukaryota/Harosa/Alveolata/Myzozoa/Holodinophyta/Dinophyceae/Gonyaulacales/Pyrocystaceae,Pyrocystaceae,Pyrocystaceae,Gonyaulacales,TRUE
+/living/Eukaryota/Harosa/Alveolata/Myzozoa/Holodinophyta/Dinophyceae/Gonyaulacales/Pyrophacaceae/Pyrophacus,Pyrophacus,Pyrophacus,Gonyaulacales,TRUE
+/living/Eukaryota/Harosa/Alveolata/Myzozoa/Holodinophyta/Dinophyceae/Gymnodiniales,Gymnodiniales,Gymnodiniales,Gymnodiniales,TRUE
+/living/Eukaryota/Harosa/Alveolata/Myzozoa/Holodinophyta/Dinophyceae/Peridiniales/Amphidomataceae/Oxytoxum,Oxytoxum,Oxytoxum,Peridiniales,TRUE
+/living/Eukaryota/Harosa/Alveolata/Myzozoa/Holodinophyta/Dinophyceae/Peridiniales/Podolampadaceae/Podolampas,Podolampas,Podolampas,Peridiniales,TRUE
+/living/Eukaryota/Harosa/Alveolata/Myzozoa/Holodinophyta/Dinophyceae/Peridiniales/Protoperidiniaceae/Protoperidinium,Protoperidinium,Protoperidinium,Peridiniales,TRUE
+/living/Eukaryota/Harosa/Rhizaria/Retaria,Retaria,Retaria,Retaria,TRUE
+/living/Eukaryota/Harosa/Rhizaria/Retaria/Acantharia,Acantharia,Acantharia,Retaria,TRUE
+/living/Eukaryota/Harosa/Rhizaria/Retaria/Foraminifera,Foraminifera,Foraminifera,Retaria,TRUE
+/living/Eukaryota/Harosa/Rhizaria/Retaria/Polycystinea/Nassellaria,Nassellaria,Nassellaria,Retaria,TRUE
+/living/Eukaryota/Harosa/Rhizaria/Retaria/Polycystinea/Spumellaria,Spumellaria,Spumellaria,Retaria,TRUE
+/living/Eukaryota/Harosa/Stramenopiles/Ochrophyta/Bacillariophyceae,Bacillariophyceae,Bacillariophyceae,Bacillariophyceae,TRUE
+/living/Eukaryota/Harosa/Stramenopiles/Ochrophyta/Bacillariophyta/Bacillariophytina/Bacillariophyceae/Coscinodiscophycidae/Asterolamprales,Asterolamprales,Asterolamprales,Asterolamprales,TRUE
+/living/Eukaryota/Harosa/Stramenopiles/Ochrophyta/Bacillariophyta/Bacillariophytina/Bacillariophyceae/Coscinodiscophycidae/Hemiaulales/Climacodium,Climacodium,Climacodium,Climacodium,TRUE
+/living/Eukaryota/Harosa/Stramenopiles/Ochrophyta/Bacillariophyta/Bacillariophytina/Bacillariophyceae/Coscinodiscophycidae/Hemiaulales/Climacodium/Climacodium inter. Crocosphaera,Climacodium inter. Crocosphaera,Climacodium inter. Crocosphaera,Climacodium inter. Crocosphaera,TRUE
+/living/Eukaryota/Harosa/Stramenopiles/Ochrophyta/Bacillariophyta/Bacillariophytina/Bacillariophyceae/Coscinodiscophycidae/Melosiraceae,Melosiraceae,Melosiraceae,Melosiraceae,TRUE
+/living/Eukaryota/Harosa/Stramenopiles/Ochrophyta/Bacillariophyta/Bacillariophytina/Bacillariophyceae/Diatoma/chainlarge,chainlarge,chainlarge,diatoma_chainlarge,TRUE
+/living/Eukaryota/Harosa/Stramenopiles/Ochrophyta/Bacillariophyta/Bacillariophytina/Bacillariophyceae/Diatoma/chainthin,chainthin,chainthin,diatoma_chainthin,TRUE
+/living/Eukaryota/Harosa/Stramenopiles/Ochrophyta/Bacillariophyta/Bacillariophytina/Bacillariophyceae/Fragilariopsis,Fragilariopsis,Fragilariopsis,Fragilariopsis,TRUE
+/living/Eukaryota/Harosa/Stramenopiles/Ochrophyta/Bacillariophyta/Bacillariophytina/Bacillariophyceae/Nitzschia,Nitzschia,Nitzschia,Nitzschia,TRUE
+/living/Eukaryota/Harosa/Stramenopiles/Ochrophyta/Bacillariophyta/Bacillariophytina/Bacillariophyceae/Pseudo-nitzschia/Pseudo-Nitzschia chain,Pseudo-Nitzschia chain,Pseudo-Nitzschia chain,Pseudo-Nitzschia chain,TRUE
+/living/Eukaryota/Harosa/Stramenopiles/Ochrophyta/Bacillariophyta/Bacillariophytina/Bacillariophyceae/Thalassionematales,Thalassionematales,Thalassionematales,Thalassionematales,TRUE
+/living/Eukaryota/Harosa/Stramenopiles/Ochrophyta/Bacillariophyta/Bacillariophytina/Mediophyceae/Bacteriastrum,Bacteriastrum,Bacteriastrum,Bacteriastrum,TRUE
+/living/Eukaryota/Harosa/Stramenopiles/Ochrophyta/Bacillariophyta/Bacillariophytina/Mediophyceae/Chaetoceros,Chaetoceros,Chaetoceros,Chaetoceros,TRUE
+/living/Eukaryota/Harosa/Stramenopiles/Ochrophyta/Bacillariophyta/Bacillariophytina/Mediophyceae/Chaetoceros/Chaetoceros peruvianus,Chaetoceros peruvianus,Chaetoceros peruvianus,Chaetoceros,TRUE
+/living/Eukaryota/Harosa/Stramenopiles/Ochrophyta/Bacillariophyta/Bacillariophytina/Mediophyceae/Ditylum,Ditylum,Ditylum,Ditylum,TRUE
+/living/Eukaryota/Harosa/Stramenopiles/Ochrophyta/Bacillariophyta/Bacillariophytina/Mediophyceae/Ditylum/part,part<Ditylum,part_Ditylum,Ditylum,TRUE
+/living/Eukaryota/Harosa/Stramenopiles/Ochrophyta/Bacillariophyta/Bacillariophytina/Mediophyceae/Hemiaulus,Hemiaulus,Hemiaulus,Hemiaulus,TRUE
+/living/Eukaryota/Harosa/Stramenopiles/Ochrophyta/Bacillariophyta/Bacillariophytina/Mediophyceae/Odontella,Odontella,Odontella,Odontella,TRUE
+/living/Eukaryota/Harosa/Stramenopiles/Ochrophyta/Bacillariophyta/Bacillariophytina/Mediophyceae/Odontella/part,part<Odontella,part_Odontella,Odontella,TRUE
+/living/Eukaryota/Harosa/Stramenopiles/Ochrophyta/Bacillariophyta/Bacillariophytina/Mediophyceae/Planktoniella/Planktoniella sol,Planktoniella sol,Planktoniella sol,Planktoniella sol,TRUE
+/living/Eukaryota/Harosa/Stramenopiles/Ochrophyta/Bacillariophyta/Coscinodiscophytina/Coscinodiscaceae,Coscinodiscaceae,Coscinodiscaceae,Coscinodiscaceae,TRUE
+/living/Eukaryota/Harosa/Stramenopiles/Ochrophyta/Bacillariophyta/Coscinodiscophytina/Rhizosoleniaceae,Rhizosoleniaceae,Rhizosoleniaceae,Rhizosoleniaceae,TRUE
+/living/Eukaryota/Harosa/Stramenopiles/Ochrophyta/Bacillariophyta/Coscinodiscophytina/Rhizosolenids/Dactyliosolen,Dactyliosolen,Dactyliosolen,Rhizosoleniaceae,TRUE
+/living/Eukaryota/Harosa/Stramenopiles/Ochrophyta/Bacillariophyta/Coscinodiscophytina/Rhizosolenids/Guinardia,Guinardia,Guinardia,Rhizosoleniaceae,TRUE
+/living/Eukaryota/Harosa/Stramenopiles/Ochrophyta/Bacillariophyta/Coscinodiscophytina/Rhizosolenids/Rhizosolenia/Rhizosolenia inter. Richelia,Rhizosolenia inter. Richelia,Rhizosolenia inter. Richelia,Rhizosoleniaceae,TRUE
+/living/Eukaryota/Harosa/Stramenopiles/Ochrophyta/pennate,pennate,pennate,pennate,TRUE
+/living/Eukaryota/Opisthokonta/Holozoa/Metazoa/Arthropoda/Crustacea/Maxillopoda/Copepoda,Copepoda,Copepoda,Copepoda,TRUE
+/living/Eukaryota/Opisthokonta/Holozoa/Metazoa/Arthropoda/Crustacea/Maxillopoda/Copepoda/Calanoida,Calanoida,Calanoida,Copepoda,TRUE
+/living/Eukaryota/Opisthokonta/Holozoa/Metazoa/Arthropoda/Crustacea/Maxillopoda/Copepoda/Cyclopoida/Oithonidae,Oithonidae,Oithonidae,Copepoda,TRUE
+/living/Eukaryota/Opisthokonta/Holozoa/Metazoa/Arthropoda/Crustacea/Maxillopoda/Copepoda/Poecilostomatoida/Oncaeidae,Oncaeidae,Oncaeidae,Copepoda,TRUE
+/living/Eukaryota/Opisthokonta/Holozoa/Metazoa/Arthropoda/Crustacea/nauplii,nauplii,nauplii,other_Crustacea,TRUE
+/living/Eukaryota/Opisthokonta/Holozoa/Metazoa/Arthropoda/Crustacea/part,part<Crustacea,part_Crustacea,other_Crustacea,TRUE
+/living/Eukaryota/Opisthokonta/Holozoa/Metazoa/Chordata/Tunicata/Appendicularia,Appendicularia,Appendicularia,Appendicularia,TRUE
+/living/other,other<living,other_living,other_living,FALSE
+/living/other/egg,egg<other,other_egg,other_egg,TRUE
+/living/other/othertocheck/crumple sphere,crumple sphere,crumple sphere,other_living,FALSE
+/living/other/othertocheck/darksphere,darksphere,darksphere,darksphere,FALSE
+/living/other/othertocheck/lightsphere,lightsphere,lightsphere,lightsphere,FALSE
+/not-living/artefact,artefact,artefact,artefact,FALSE
+/not-living/artefact/badfocus,badfocus,badfocus,artefact,FALSE
+/not-living/artefact/bubble,bubble,bubble,artefact,FALSE
+/not-living/detritus/dark,dark,dark,detritus,FALSE
+/not-living/detritus/fiber,fiber,fiber,detritus,FALSE
+/not-living/detritus/light,light,light,detritus,FALSE
+/not-living/plastic/other/rods/darkrods,darkrods,darkrods,darkrods,FALSE
+/not-living/plastic/other/rods/lightrods,lightrods,lightrods,lightrods,FALSE
+/temporary/ball_bearing_like,ball_bearing_like,ball_bearing_like,other_living,FALSE
+/temporary/contrasted_blob,contrasted_blob,contrasted_blob,other_living,FALSE
+/temporary/dinophyceae_shape,dinophyceae_shape,dinophyceae_shape,other_living,FALSE
+/temporary/Dinophyceae/polar_view,polar_view<Dinophyceae,polar_view,other_living,FALSE
+/temporary/transparent_u,transparent_u,transparent_u,other_living,FALSE
