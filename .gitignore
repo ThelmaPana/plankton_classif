@@ -1,3 +1,4 @@
+__pycache__/
 .Rproj.user
 .Rhistory
 .RData
@@ -5,3 +6,6 @@
 .ipynb_checkpoints/
 reports
 figures
+old/
+draft/
+perf/
