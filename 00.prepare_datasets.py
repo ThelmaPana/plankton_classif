@@ -45,6 +45,6 @@ df_test = df_all[df_all['set'] == 'test'].drop(columns=['set'])
 
 # Write to CSV
 print("Writing data splits")
-df_train.to_csv(f"{output_dir}/train_features.csv", index=False)
-df_valid.to_csv(f"{output_dir}/valid_features.csv", index=False)
-df_test.to_csv(f"{output_dir}/test_features.csv", index=False)
+df_train.to_csv(f"{output_dir}/train_labels.csv", index=False)
+df_valid.to_csv(f"{output_dir}/valid_labels.csv", index=False)
+df_test.to_csv(f"{output_dir}/test_labels.csv", index=False)
