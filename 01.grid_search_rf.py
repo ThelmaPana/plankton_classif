@@ -1,3 +1,11 @@
+#!/usr/bin/env python
+#--------------------------------------------------------------------------#
+# Project: plankton_classif
+# Script purpose: Train a random forest classifier
+# Date: 27/03/2025
+# Author: Emma Amblard & Thelma Panaïotis
+#--------------------------------------------------------------------------#
+
 import argparse
 import json
 import time
@@ -43,9 +51,10 @@ NON_BIOL_CLASSES_DICT = {
     'zoocam': ["detritus", "fiber_detritus", "bubble", "light_detritus", "other_living", "artefact",
                "other_plastic", "medium_detritus", "gelatinous", "feces", "fiber_plastic"],
     'zooscan': ["detritus", "artefact", "fiber", "badfocus", "bubble", "other_egg", "seaweed", "Insecta", "other_living"],
-    'uvp6': ["detritus", "fiber", "artefact", "reflection", "other<living", "dead<house", "darksphere"]
+    'uvp6': ["detritus", "fiber", "artefact", "reflection", "other<living", "dead<house", "darksphere", "t004", "t001"]
 }
-
+  
+  
 DEFAULT_RF_PARAMS = {
     "weight_sensitivity": 1.0,
     "random_state": 3,
@@ -214,7 +223,6 @@ if __name__ == "__main__":
     parser.add_argument("-v", "--verbose", action="store_true", help="activation of verbose mode")
 
     args = parser.parse_args()
-
 
     dataset_name = args.dataset
     native_features_path = args.features_csv
