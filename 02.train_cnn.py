@@ -1,3 +1,12 @@
+#!/usr/bin/env python
+#--------------------------------------------------------------------------#
+# Project: plankton_classif
+# Script purpose: Train a CNN classifier
+# Date: 27/03/2025
+# Author: Emma Amblard & Thelma Panaïotis
+#--------------------------------------------------------------------------#
+
+
 import tensorflow_tricks  # settings for tensorflow to behave nicely
 
 from os import makedirs
