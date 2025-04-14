@@ -20,7 +20,6 @@ parser.add_argument('--predictions_path', type=str, help='Path to predictions')
 args = parser.parse_args()
 
 predictions_path = args.predictions_path
-#predictions_path = '/home/tpanaiotis/complex/share/classif_results/predictions'
 
 # Create dir to store reports
 save_dir = 'perf'
@@ -66,12 +65,12 @@ files.sort()
 
 # Get relevant files for each model
 eff_files = [f for f in files if 'effnetv2s' in f]
-mob600_files = [f for f in files if 'mobilenet600_' in f]
+mob600_files = [f for f in files if 'mobilenet600.' in f]
 mob600_pca_files = [f for f in files if 'mobilenet_pca50_rf' in f]
-nat_fr_files = [f for f in files if 'native_rf_p' in f]
+nat_rf_files = [f for f in files if 'native_rf.' in f]
 
 # List with all relevant files
-files = nat_fr_files + mob600_pca_files + mob600_files + eff_files
+files = nat_rf_files + mob600_pca_files + mob600_files + eff_files
 
 # For each file, find dataset and method
 files_dict = {
@@ -101,7 +100,7 @@ for dataset in datasets:
     
     for i, path in enumerate(paths):
         # Get model name
-        model = os.path.split(path)[1].split('_', 1)[1].replace('_predictions.csv', '')
+        model = os.path.split(path)[1].split('_', 1)[1].replace('.csv', '')
         print(f'Generating report for {model}')
     
         # Read file
@@ -200,4 +199,6 @@ for dataset in datasets:
     print(f'Saving reports for {dataset}')
     cr_all.to_csv(os.path.join(save_dir, f'report_{dataset}_detailed.csv'), index=False)
     cr_g_all.to_csv(os.path.join(save_dir, f'report_{dataset}_grouped.csv'), index=False)
+
+print('Done')
 

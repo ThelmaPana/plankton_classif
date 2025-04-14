@@ -20,7 +20,6 @@ parser.add_argument('--predictions_path', type=str, help='Path to predictions')
 args = parser.parse_args()
 
 predictions_path = args.predictions_path
-predictions_path = '/home/tpanaiotis/complex/share/classif_results/predictions'
 
 # Create dir to store reports
 save_dir = 'perf'
@@ -35,19 +34,16 @@ df_all = pd.DataFrame()
 # List datasets and groups for each dataset
 datasets = ['flowcam', 'ifcb', 'isiis', 'uvp6', 'zoocam', 'zooscan']
 ## Sheet is "Taxonomy match"
-#sheet_id = '11_I-CZEVQTQqMwLuAI0N6m1RX8nWKE9ml8AgPtaCTcc'
+sheet_id = '11_I-CZEVQTQqMwLuAI0N6m1RX8nWKE9ml8AgPtaCTcc'
 
 
 for dataset in datasets:
     
     # Generate sheet url
-    #sheet_name = dataset
-    #url = f'https://docs.google.com/spreadsheets/d/{sheet_id}/gviz/tq?tqx=out:csv&sheet={sheet_name}'
+    sheet_name = dataset
+    url = f'https://docs.google.com/spreadsheets/d/{sheet_id}/gviz/tq?tqx=out:csv&sheet={sheet_name}'
     # Reed sheet
-    #df = pd.read_csv(url, usecols=['taxon', 'level2', 'plankton'])
-    
-    # Read taxonomy match files
-    df = pd.read_csv(f'taxonomy_match/Taxonomy match - {dataset}.csv')
+    df = pd.read_csv(url, usecols=['taxon', 'level2', 'plankton'])
     
     # Add name of dataset
     df['dataset'] = dataset
@@ -59,7 +55,7 @@ for dataset in datasets:
 df_all = df_all.rename(columns={'level2': 'grouped'})
 
 
-# Prepare computation of random perf
+# Prepare computation of random perf (True if already done)
 rand_comp = {
     'flowcam': False, 
     'ifcb': False, 
@@ -97,7 +93,7 @@ for file in files:
     
     # Get dataset and model name
     dataset = os.path.split(file)[1].split('_')[0]
-    model = os.path.split(file)[1].split('_', 1)[1].replace('_predictions.csv', '')
+    model = os.path.split(file)[1].split('_', 1)[1].replace('.csv', '')
     metrics['dataset'].append(dataset)
     metrics['model'].append(model)
     print(f'Processing {model} for {dataset}')
@@ -171,4 +167,4 @@ metrics = pd.DataFrame(metrics)
 print('Saving results')
 metrics.to_csv(os.path.join(save_dir,'prediction_metrics.csv'), index = False)
 
-
+print('Done')

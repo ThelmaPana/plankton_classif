@@ -1,3 +1,11 @@
+#!/usr/bin/env python
+#--------------------------------------------------------------------------#
+# Project: plankton_classif
+# Script purpose: Convert a CNN classifier to a feature extractor
+# Date: 08/04/2025
+# Author: Emma Amblard & Thelma Panaïotis
+#--------------------------------------------------------------------------#
+
 import tensorflow_tricks  # settings for tensorflow to behave nicely
 
 from os.path import dirname, join
@@ -18,8 +26,7 @@ parser.add_argument('--mode', type=str, default='default', help='Keep the last (
 args = parser.parse_args()
 
 model_name = args.model_name
-model_path = join(args.model_path, model_name)
-
+model_path = join(args.model_path, 'models', model_name)
 
 # read model weights
 my_cnn = tf.keras.models.load_model(model_path, compile=False)
