@@ -6,7 +6,6 @@ import pandas as pd
 import tensorflow as tf
 from tensorflow.keras import layers, optimizers, losses, callbacks
 import tensorflow_hub as hub
-import tensorflow_addons as tfa
 
 
 def Create(
@@ -64,7 +63,7 @@ def Create(
 
 def Compile(
     model, initial_lr, lr_method='constant',
-    decay_steps=1.0, decay_rate=0.5, loss='cce'
+    decay_steps=1.0, decay_rate=0.5
 ):
     """
     Compiles a CNN model.
@@ -80,12 +79,6 @@ def Compile(
         decay_rate (float): rate of learning rate decay. The actual decay is computed as:
                 initial_lr / (1 + decay_rate * step / decay_steps)
             where step is one optimiser step (i.e. one data batch).
-        loss (str): loss function.
-          'cce' for CategoricalCrossentropy
-          (see https://www.tensorflow.org/api_docs/python/tf/keras/losses/CategoricalCrossentropy),
-          'sfce' for SigmoidFocalCrossEntropy
-          (see https://www.tensorflow.org/addons/api_docs/python/tfa/losses/SigmoidFocalCrossEntropy),
-          useful for unbalanced classes
 
     Returns:
         model (tf.keras.Sequential): compiled CNN model
@@ -105,15 +98,11 @@ def Compile(
     optimizer = optimizers.Adam(learning_rate=lr)
 
     # Define loss
-    if loss == 'cce':
-        loss = losses.CategoricalCrossentropy(from_logits=True,
-                   reduction=losses.Reduction.SUM_OVER_BATCH_SIZE)
-        # TODO consider using
-        # https://www.tensorflow.org/api_docs/python/tf/keras/losses/SparseCategoricalCrossentropy
-        # to avoid having to one-hot encode the labels
-    elif loss == 'sfce':
-        loss = tfa.losses.SigmoidFocalCrossEntropy(from_logits=True,
-                   reduction=losses.Reduction.SUM_OVER_BATCH_SIZE)
+    loss = losses.CategoricalCrossentropy(from_logits=True,
+               reduction=losses.Reduction.SUM_OVER_BATCH_SIZE)
+    # TODO consider using
+    # https://www.tensorflow.org/api_docs/python/tf/keras/losses/SparseCategoricalCrossentropy
+    # to avoid having to one-hot encode the labels
 
     # Compile model
     model.compile(

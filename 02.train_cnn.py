@@ -35,40 +35,62 @@ DEFAULT_DATA_PATH = join(PATH, '../io/data/')
 DEFAULT_SAVE_PATH = join(PATH, '../io/')
 DEFAULT_MODEL_PATH = join(DEFAULT_SAVE_PATH, 'models/')
 
-parser = argparse.ArgumentParser(description='Script to train a model')
+NON_BIOL_CLASSES_DICT = {
+    'ifcb': ["other_living", "detritus", "other_living_elongated", "bad", "other_interaction", "spore"],
+    'flowcam': ["dark", "detritus", "light", "lightsphere", "fiber", "lightrods", "contrasted_blob",
+                "artefact", "darksphere", "darkrods", "ball_bearing_like", "other_living", "crumple sphere",
+                "badfocus", "bubble", "dinophyceae_shape", "transparent_u"],
+    'isiis': ["detritus", "streak", "other_living", "vertical line"],
+    'zoocam': ["detritus", "fiber_detritus", "bubble", "light_detritus", "other_living", "artefact",
+               "other_plastic", "medium_detritus", "gelatinous", "feces", "fiber_plastic"],
+    'zooscan': ["detritus", "artefact", "fiber", "badfocus", "bubble", "other_egg", "seaweed", "Insecta", "other_living"],
+    'uvp6': ["detritus", "fiber", "artefact", "reflection", "other<living", "dead<house", "darksphere", "t004", "t001"]
+}
 
-parser.add_argument('--dataset', type=str, default='debug', help='Name of the dataset to train on')
+parser = argparse.ArgumentParser(description='Script to train a CNN model')
+
+parser.add_argument('--dataset_name', type=str, default='debug', help='Name of the dataset to train on')
 parser.add_argument('--data_path', type=str, default=DEFAULT_DATA_PATH, help='Path to data folder')
-parser.add_argument('--model_name', type=str, default='debug', help='Model name')
-parser.add_argument('--model_path', type=str, default=DEFAULT_MODEL_PATH, help='Path where to save the model and its checkpoints')
-parser.add_argument('--model', type=str, default='mobilenet_v2_140_224', help='Model architecture to use')
+parser.add_argument("--folder_out", action="store", type=str, default=DEFAULT_MODEL_PATH, help="The path to the folder where to save the models and evaluation results")
+parser.add_argument('--name_out', type=str, default='', help='The name of the file for saving results')
+parser.add_argument('--cnn_backbone', type=str, default='mobilenet_v2_140_224', help='CNN architecture to use')
 parser.add_argument('--batch_size', type=int, default=4, help='Batch size for training')
 parser.add_argument('--epochs', type=int, default=1, help='Number of epochs for training')
-parser.add_argument('--non_biol_classes', type=str, default='', help='Labels of non biological classes separated by commas for evaluation')
 parser.add_argument('--fc_layer_size', type=str, default="600", help='size of the last(s) fc layer(s)') 
+parser.add_argument('--weight_sensitivity', type=float, default=0.0, help='A scaling exponent that controls the impact of class weighting (0 for no weights, 1 for inverse weighting)') 
+parser.add_argument('--non_biol_classes', type=str, default='', help='Labels of non biological classes (separated by commas) for evaluation')
+parser.add_argument('--bottom_crop', type=int, default=0, help='Number of pixel to crop at bottom of images to remove scale bar')
+
 
 args = parser.parse_args()
 
-dataset_name = args.dataset
+dataset_name = args.dataset_name
 data_path = args.data_path
-model_name = args.model_name
-model_path = join(args.model_path, model_name)
-model_type = args.model
-non_biol_classes = [] if args.non_biol_classes == '' else args.non_biol_classes.split(',')
+name_out = args.name_out
+folder_out = args.folder_out
+cnn_backbone = args.cnn_backbone
+weight_sensitivity = args.weight_sensitivity
+
+
+if args.non_biol_classes == '':
+    non_biol_classes = NON_BIOL_CLASSES_DICT[dataset_name] if dataset_name in NON_BIOL_CLASSES_DICT else []
+else:
+    non_biol_classes = [label for label in args.non_biol_classes.split(',')]
+
 
 
 print('Set options')
 
 # directory to save training checkpoints
-ckpt_dir = join(model_path, 'checkpoints/')
+ckpt_dir = join(folder_out, 'models', name_out, 'checkpoints/')
+#ckpt_dir = join(folder_out, 'checkpoints/')
 makedirs(ckpt_dir, exist_ok=True)
 
 # options for data generator (see dataset.EcoTaxaGenerator)
 batch_size = args.batch_size
 augment = True
 upscale = True
-with open(join(data_path, 'crop.txt')) as f:
-    bottom_crop = int(f.read())
+bottom_crop = args.bottom_crop
 
 # CNN structure (see cnn.Create and cnn.Compile)
 model_handle_map = {
@@ -76,7 +98,7 @@ model_handle_map = {
     "efficientnet_v2_S": "https://tfhub.dev/google/imagenet/efficientnet_v2_imagenet21k_s/feature_vector/2",
     "efficientnet_v2_XL": "https://tfhub.dev/google/imagenet/efficientnet_v2_imagenet21k_ft1k_xl/feature_vector/2"
 }
-fe_url = model_handle_map[model_type]
+fe_url = model_handle_map[cnn_backbone]
 input_shape = (224, 224, 3)
 fe_trainable = True
 fc_layers_sizes = [int(x) for x in args.fc_layer_size.split(',')]
@@ -84,21 +106,18 @@ fc_layers_dropout = 0.4
 classif_layer_dropout = 0.2
 
 # CNN training (see cnn.Train)
-use_class_weight = True
-weight_sensitivity = 0.25  # 0.5 = sqrt
 lr_method = 'decay'
 initial_lr = 0.0005
 decay_rate = 0.97
-loss = 'cce'
 epochs = args.epochs
 workers = 10
 
 print('Prepare datasets')
 
 # read DataFrame with image ids, paths and labels
-train_csv_path = join(join(data_path, dataset_name), 'train_labels.csv')
-val_csv_path = join(join(data_path, dataset_name), 'valid_labels.csv')
-test_csv_path = join(join(data_path, dataset_name), 'test_labels.csv')
+train_csv_path = join(data_path, 'train_labels.csv')
+val_csv_path = join(data_path, 'valid_labels.csv')
+test_csv_path = join(data_path, 'test_labels.csv')
 df_train = pd.read_csv(train_csv_path)
 df_val = pd.read_csv(val_csv_path)
 df_test = pd.read_csv(test_csv_path)
@@ -112,27 +131,28 @@ classes = class_counts.index.to_list()
 
 # generate categories weights
 # i.e. a dict with format { class number : class weight }
-if use_class_weight:
+if weight_sensitivity==0:
+    class_weights = None
+else:
     max_count = np.max(class_counts)
     class_weights = {}
     for idx,count in enumerate(class_counts.items()):
         class_weights.update({idx : (max_count / count[1])**weight_sensitivity})
-else:
-    class_weights = None
 
 # define numnber of  classes to train on
 nb_of_classes = len(classes)
-    
+
 # define data generators
 train_batches = dataset.EcoTaxaGenerator(
-    images_paths=df_train['img_path'].values,
+    images_paths=np.asarray([join(data_path, e) for e in df_train['img_path'].values]),
     input_shape=input_shape,
-    labels=df_train['label'].values, classes=classes,
+    labels=df_train['label'].values, 
+    classes=classes,
     batch_size=batch_size, augment=augment, shuffle=True,
     crop=[0,0,bottom_crop,0])
 
 val_batches = dataset.EcoTaxaGenerator(
-    images_paths=df_val['img_path'].values,
+    images_paths=np.asarray([join(data_path, e) for e in df_val['img_path'].values]),
     input_shape=input_shape,
     labels=df_val['label'].values, classes=classes,
     batch_size=batch_size, augment=False, shuffle=False,
@@ -140,7 +160,7 @@ val_batches = dataset.EcoTaxaGenerator(
 # NB: do not shuffle or augment data for validation, it is useless
     
 test_batches = dataset.EcoTaxaGenerator(
-    images_paths=df_test['img_path'].values,
+    images_paths=np.asarray([join(data_path, e) for e in df_test['img_path'].values]),
     input_shape=input_shape,
     labels=None, classes=None,
     batch_size=batch_size, augment=False, shuffle=False,
@@ -179,7 +199,6 @@ else :
         lr_method=lr_method,
         decay_steps=len(train_batches),
         decay_rate=decay_rate,
-        loss=loss
     )
 
 print('Train model') ## ----
@@ -204,7 +223,7 @@ best_epoch = None  # use None to get latest epoch
 my_cnn, epoch = cnn.Load(ckpt_dir, epoch=best_epoch)
 print(' at epoch {:d}'.format(epoch))
 
-# predict classes for all dataset
+# predict classes for test dataset
 pred, prob = cnn.Predict(
     model=my_cnn,
     batches=test_batches,
@@ -213,22 +232,29 @@ pred, prob = cnn.Predict(
 )
 
 # save prediction
-eval_path = join(model_path, 'evaluation_results/')
-if not isdir(eval_path):
-    makedirs(eval_path)
+pred_path = join(folder_out, 'predictions')
+eval_path = join(folder_out, 'evaluations')
+makedirs(pred_path, exist_ok=True)
+makedirs(eval_path, exist_ok=True)
 
+df_test = df_test[['objid', 'img_path', 'label']].copy() # keep only a few columns
 df_test['predicted_label'] = pred
 for i, label in enumerate(classes):
     df_test[label] = prob[:,i]
-df_test.to_csv(join(eval_path, 'cnn_{}_predictions.csv'.format(model_name)))
+df_test.to_csv(join(pred_path, '{}.csv'.format(name_out)))
 
 # compute a few scores
-cr = biol_metrics.classification_report(y_true=df_test.label, y_pred=df_test.predicted_label, y_prob=prob,
-  non_biol_classes = non_biol_classes)
+cr = biol_metrics.classification_report(
+    y_true=df_test.label, 
+    y_pred=df_test.predicted_label, 
+    y_prob=prob,
+    non_biol_classes = non_biol_classes
+)
 print(cr)
-cr.to_csv(join(eval_path, 'cnn_{}_classification_report.csv'.format(model_name)))
+cr.to_csv(join(eval_path, '{}.csv'.format(name_out)))
 
 # save model
-my_cnn.save(model_path, include_optimizer=False)
+my_cnn.save(join(folder_out, 'models', name_out), include_optimizer=False)
 # NB: do not include the optimizer state: (i) we don't need to retrain this final
 #     model, (ii) it does not work with the native TF format anyhow.
+
