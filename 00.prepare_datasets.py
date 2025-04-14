@@ -38,6 +38,11 @@ col_to_order = ['set', 'objid', 'img_path', 'label']
 cols = col_to_order + [col for col in df_all.columns if col not in col_to_order]
 df_all = df_all[cols]
 
+# Create symbolic link to access images from the prepared data folder
+os.symlink(os.path.join(data_dir, 'imgs'), os.path.join(output_dir, 'imgs'))
+
+
+
 # Split into training, validation, and test sets
 df_train = df_all[df_all['set'] == 'train'].drop(columns=['set'])
 df_valid = df_all[df_all['set'] == 'valid'].drop(columns=['set'])
