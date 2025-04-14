@@ -38,8 +38,7 @@ IGNORE_FEATURES_DICT = {
     'zoocam': ['_item_1', '_area_1', 'cutted20', 'isduplicate', 'param2', 'param3', 'param4', 'param5', 'label',
                'foundinframe', 'xmin', 'ymin', 'xmax', 'ymax', 'param1', 'bord_1', 'framename', 'annotation'],
     'zooscan': ['perim_', 'circ_', '_area', '_area_1', 'perim__1', 'circ__1', '_area_2'],
-    'uvp6': ['xmg5', 'ymg5', 'compentropy', 'compmean', 'compslope', 'compm1', 'compm2', 'compm3', 'areai', 'esd',
-             'centroids', 'cdexc', 'rawvig']
+    'uvp6': []
 }
 
 NON_BIOL_CLASSES_DICT = {
@@ -201,7 +200,7 @@ if __name__ == "__main__":
 
     parser = argparse.ArgumentParser(description="Script to train RF classifiers using grid search")
 
-    parser.add_argument("--dataset", action="store", type=str, default="",
+    parser.add_argument("--dataset_name", action="store", type=str, default="",
                         help="Name of the dataset to retrieve native features from database")
     parser.add_argument("--features_csv", action="store", type=str, default="",
                         help="Path to the folder containing labels and native feature csv files")
@@ -217,6 +216,8 @@ if __name__ == "__main__":
                         help="Labels of non biological classes separated by commas for evaluation")
     parser.add_argument("--folder_out", action="store", type=str, default="",
                         help="The path to the folder where to save the models and evaluation results")
+    parser.add_argument("--name_out", action="store", type=str, default="",
+                        help="The name of the file for saving results")
     parser.add_argument("--save_model", action="store_true", default=False,
                         help="Option to save the model")
 
@@ -224,7 +225,7 @@ if __name__ == "__main__":
 
     args = parser.parse_args()
 
-    dataset_name = args.dataset
+    dataset_name = args.dataset_name
     native_features_path = args.features_csv
     deep_features_path = args.deep_features_csv
     
@@ -258,6 +259,7 @@ if __name__ == "__main__":
         non_biol_classes = [label for label in args.non_biol_classes.split(',')]
 
     folder_out = args.folder_out
+    name_out = args.name_out
     if folder_out == "":
         print("WARNING: No folder_out path was given, "
               "by default all results will be saved in {}".format(DEFAULT_SAVE_PATH), flush=True)
@@ -304,7 +306,19 @@ if __name__ == "__main__":
     if save_model:
         models_folder = join(folder_out, "models")
         makedirs(models_folder, exist_ok=True)
-
+    
+    # create output folders for detailed results
+    pred_folder_det = join(folder_out, "detailed_results", name_out, "predictions")
+    eval_folder_det = join(folder_out, "detailed_results", name_out, "evaluations")
+    makedirs(pred_folder_det, exist_ok=True)
+    makedirs(eval_folder_det, exist_ok=True)
+    if save_model:
+        models_folder_det = join(folder_out, "detailed_results", name_out, "models")
+        makedirs(models_folder_det, exist_ok=True)
+    
+    # initiate empty best model
+    best_model = None
+    
     # grid search on parameters
     for params in parameter_grid:
 
@@ -322,19 +336,43 @@ if __name__ == "__main__":
 
         # apply classifier
         df_predictions, cr = apply_classifier(model, data_dict, classes, non_biol_classes)
-
-        print('Save results', flush=True)
+        
+        # get log loss
+        log_loss = cr.loc['log loss', 'f1-score']
+        
+        # update best model if lower log loss
+        if best_model is None or log_loss < best_model['log_loss']:
+            best_model = {'model': model, 'log_loss': log_loss}
+        
+        print('Save gridsearch results', flush=True)
 
         # save predictions
-        df_predictions.to_csv(join(pred_folder, '{}_predictions.csv'.format(name_prefix)))
-
+        df_predictions.to_csv(join(pred_folder_det, '{}.csv'.format(name_prefix)))
+        
         # save classification report
-        cr.to_csv(join(eval_folder, '{}_classification_report.csv'.format(name_prefix)))
-
+        cr.to_csv(join(eval_folder_det, '{}.csv'.format(name_prefix)))
+        
         # save model
         if save_model:
-            model_path = join(models_folder, 'rf_{}.pickle'.format(name_prefix))
+            model_path = join(models_folder_det, '{}.pickle'.format(name_prefix))
             print("Saving model in {}".format(model_path), flush=True)
             with open(model_path, 'wb') as model_file:
                 pickle.dump(model, model_file)
 
+
+    ## Apply best model
+    print('Save final results', flush=True)
+    df_predictions, cr = apply_classifier(best_model['model'], data_dict, best_model['model'].classes_, non_biol_classes)
+
+    # save predictions
+    df_predictions.to_csv(join(pred_folder, '{}.csv'.format(name_out)))
+    
+    # save classification report
+    cr.to_csv(join(eval_folder, '{}.csv'.format(name_out)))
+    
+    # save model
+    if save_model:
+        model_path = join(models_folder, '{}.pickle'.format(name_out))
+        print("Saving model in {}".format(model_path), flush=True)
+        with open(model_path, 'wb') as model_file:
+            pickle.dump(model, model_file)
