@@ -7,6 +7,8 @@
 
 library(tidyverse)
 library(ggpattern)
+library(googlesheets4)
+library(chroma)
 
 
 
@@ -217,3 +219,119 @@ p4 <- df %>%
 ggsave(p4, file = "figures/figure_4.png", width = 180, height = 100, unit = "mm", dpi = 300, bg = "white")
 
 
+## Performance increase, from native RF to deep ----
+#--------------------------------------------------------------------------#
+
+times_100 <- function(x){x * 100}
+
+# Dataset to work with
+dataset <- "zooscan"
+
+# Spreadsheet for taxonomy match
+ss <- "https://docs.google.com/spreadsheets/d/11_I-CZEVQTQqMwLuAI0N6m1RX8nWKE9ml8AgPtaCTcc/edit#gid=0"
+
+# Sheet with taxonomy
+taxo <- read_sheet(ss, sheet = dataset) %>% 
+  select(taxon, grouped = level2, plankton)
+
+# Read classification reports for given dataset
+files <- list.files("perf", full.names = TRUE, pattern = "report*") %>% str_subset(dataset)
+
+## Detailed metrics
+df <- read_csv(files %>% str_subset("detailed"), show_col_types = FALSE) %>% 
+  select(taxon, everything()) %>% 
+  # reformat to longer
+  pivot_longer(`precision-native_rf`:`f1-effnetv2s`) %>% 
+  # get metric and model from name
+  separate(name, into = c("metric", "model"), sep = "-") %>% 
+  mutate(level = "detailed")
+
+# Separate RF values which are the reference
+df_rf <- df %>% 
+  filter(model == "native_rf") %>% 
+  rename(ref = value) %>% 
+  select(-model)
+
+# Compute the difference between metrics and reference
+df <- df %>% 
+  filter(model != "native_rf") %>% 
+  left_join(df_rf, by = join_by(taxon, grouped, plankton, metric, level)) %>% 
+  mutate(value = value - ref) %>% 
+  select(-ref)
+
+## Grouped metrics
+df_g <- read_csv(files %>% str_subset("grouped"), show_col_types = FALSE) %>% 
+  select(taxon, everything()) %>% 
+  # reformat to longer
+  pivot_longer(`precision-native_rf`:`f1-effnetv2s`) %>% 
+  # get metric and model from name
+  separate(name, into = c("metric", "model"), sep = "-") %>% 
+  mutate(level = "grouped")
+
+# Separate RF values which are the reference
+df_g_rf <- df_g %>% 
+  filter(model == "native_rf") %>% 
+  rename(ref = value) %>% 
+  select(-model)
+
+# Compute the difference between metrics and reference
+df_g <- df_g %>% 
+  filter(model != "native_rf") %>% 
+  left_join(df_g_rf, by = join_by(taxon, plankton, metric, level)) %>% 
+  mutate(value = value - ref) %>% 
+  select(-ref)
+
+# Generate nice colours
+my_cols <- c(
+  "Mob + MLP600" = "#3a62bfff",
+  #"Eff S + MLP600" = "#77d1daff",
+  "Eff S + MLP600" = darken("#77d1daff"),
+  #"Mob + PCA + RF" = "#b0aaf8ff"
+  "Mob + PCA + RF" = darken("#b0aaf8ff")
+)
+
+
+
+# Prepare nice names for models
+models <- tibble(
+  model = c("mobilenet600", "effnetv2s", "mobilenet_pca50_rf"),
+  name = c("Mob + MLP600", "Eff S + MLP600", "Mob + PCA + RF")
+) %>% 
+  mutate(name = fct_inorder(name))
+
+
+# Join detailed and grouped metrics together
+df_all <- df %>% 
+  bind_rows(df_g) %>% 
+  mutate(value = value * 100) %>% 
+  # metric as factor for plotting
+  mutate(
+    metric = str_to_sentence(metric),
+    level = str_to_sentence(level)
+  ) %>% 
+  mutate(metric = factor(metric, levels = c("Precision", "Recall", "F1"))) %>% 
+  left_join(models, by = join_by(model)) %>% 
+  select(-model) %>% 
+  rename(model = name)
+
+override.linetype <- c(1, 3, 2) 
+# Plot it
+p5 <- df_all %>% 
+  ggplot(aes(x = value, color = model, linetype = model)) +
+  geom_vline(xintercept = 0, colour = "gray80", linewidth = 1) +
+  geom_density(adjust=0.75) +
+  scale_color_manual(
+    guide = none,
+    values = my_cols,
+    labels = c(
+      `Mob + MLP600` = expression(Mob + MLP[600]),
+      `Eff S + MLP600` = expression(Eff~S + MLP[600])
+    )) +
+  scale_y_continuous(breaks = c(0, 0.01, 0.02)) +
+  theme_classic() +
+  theme(strip.background = element_blank(), legend.text.align = 0, legend.position = "bottom", text = element_text(family = "Helvetica")) +
+  facet_grid(rows = vars(level), cols = vars(metric)) +
+  labs(x = "Percent increase in metric, from RF on native features", y = "Estimated probability density", color = "Model") +
+  guides(colour = guide_legend(override.aes = list(linetype = override.linetype))) +
+  scale_linetype(guide = "none")
+ggsave(p5, file = "figures/figure_5.png", width = 180, height = 100, unit = "mm", dpi = 300, bg = "white")
