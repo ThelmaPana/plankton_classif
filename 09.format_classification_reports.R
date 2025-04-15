@@ -8,11 +8,7 @@
 library(tidyverse)
 library(gt)
 library(officer)
-library(googlesheets4)
-gs4_auth(email = "thelma.panaiotis@imev-mer.fr")
-
-ss <- "https://docs.google.com/spreadsheets/d/1wcS_UrdkX7jJV32iwlQXC9L-WXB8sobV8tm_nBHxUb0/edit?gid=1055882809#gid=1055882809"
-# NB this assumes that the spreadsheet already contains one tab per dataset
+library(openxlsx)
 
 
 ## List detailed classification reports ----
@@ -142,72 +138,40 @@ for (file in files) {
     table_number <- tables %>% filter(dataset == !!dataset) %>% pull(table_number)
     table_caption <- paste0("Table ", table_number, ": Classification report for detailed classes in the ", dataset_name, " dataset. Reported values are F1-scores. The models are described in Figure 1.")
     
-    ## Write to Gsheet
-    # Flush tab
-    range_clear(ss = ss, sheet = dataset, range = "A:F", reformat = FALSE)
+    ## Write to excel
+    # Create workbook if it does not exist 
+    if (!exists("wb")) {
+      wb <- createWorkbook()  
+    }
+    
+    # Create tab for dataset
+    addWorksheet(wb, sheetName = dataset, gridLines = FALSE)
     
     # Write caption
-    range_write(
-      ss = ss,
-      sheet = dataset,
-      range = "A1",
-      data = tibble(var = table_caption),
-      col_names = FALSE,
-      reformat = FALSE
-    )
+    writeData(wb, sheet = dataset, x = table_caption)
     
     # Write column names
-    range_write(
-      ss = ss,
-      sheet = dataset,
-      range = "A2",
-      data = df_plankton %>% slice_head(n = 1),
-      col_names = TRUE,
-      reformat = FALSE
-    )
-    
-    # Drop first line of content
-    range_clear(ss = ss, sheet = dataset, range = "A3:F3", reformat = FALSE)
+    writeData(wb, sheet = dataset, x = df_plankton %>% slice_head(n = 0), startCol = 1, startRow = 2)
     
     # Write "plankton" line
-    range_write(
-      ss = ss,
-      sheet = dataset,
-      range = "A3",
-      data = tibble(var = "Plankton"),
-      col_names = FALSE,
-      reformat = FALSE
-    )
+    writeData(wb, sheet = dataset, x = "Plankton", startCol = 1, startRow = 3)
     
-    # Write plankton report
-    range_write(
-      ss = ss,
-      sheet = dataset,
-      range = "A4",
-      data = df_plankton,
-      col_names = FALSE,
-      reformat = FALSE
+    # Write plankton report  with conditional formatting
+    writeData(wb, sheet = dataset, x = df_plankton, startCol = 1, startRow = 4, colNames = FALSE)
+    conditionalFormatting(
+      wb, sheet = dataset, type = "colourScale", cols = 3:6, rows = 4:(3 + nrow(df_plankton)),
+      style = c("white", "#A6D8DB"), rule = c(0, 100)
     )
     
     # Write "non plankton" line
-    range_write(
-      ss = ss,
-      sheet = dataset,
-      range = paste0("A", nrow(df_plankton) + 4),
-      data = tibble(var = "Non plankton"),
-      col_names = FALSE,
-      reformat = FALSE
+    writeData(wb, sheet = dataset, x = "Non plankton", startCol = 1, startRow = nrow(df_plankton) + 4)
+    
+    # Write non plankton report with conditional formatting
+    writeData(wb, sheet = dataset, x = df_nonplankton, startCol = 1, startRow = nrow(df_plankton) + 5, colNames = FALSE)
+    conditionalFormatting(
+      wb, sheet = dataset, type = "colourScale", cols = 3:6, rows = (nrow(df_plankton) + 5):(nrow(df_plankton) + nrow(df_nonplankton) + 4),
+      style = c("white", "#A6D8DB"), rule = c(0, 100)
     )
     
-    # Write non plankton report
-    range_write(
-      ss = ss,
-      sheet = dataset,
-      range = paste0("A", nrow(df_plankton) + 5),
-      data = df_nonplankton,
-      col_names = FALSE,
-      reformat = FALSE
-    )
-  }
-}
-
+# Save the workbook
+saveWorkbook(wb, "perf/classif_reports_supp.xlsx", overwrite = TRUE)
