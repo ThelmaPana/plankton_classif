@@ -7,9 +7,7 @@
 
 library(tidyverse)
 library(ggpattern)
-library(googlesheets4)
 library(chroma)
-
 
 
 # Path to save figures
@@ -227,12 +225,10 @@ times_100 <- function(x){x * 100}
 # Dataset to work with
 dataset <- "zooscan"
 
-# Spreadsheet for taxonomy match
-ss <- "https://docs.google.com/spreadsheets/d/11_I-CZEVQTQqMwLuAI0N6m1RX8nWKE9ml8AgPtaCTcc/edit#gid=0"
-
 # Sheet with taxonomy
-taxo <- read_sheet(ss, sheet = dataset) %>% 
+taxo <- read_csv("taxonomy_match/Taxonomy match - zooscan.csv")%>% 
   select(taxon, grouped = level2, plankton)
+
 
 # Read classification reports for given dataset
 files <- list.files("perf", full.names = TRUE, pattern = "report*") %>% str_subset(dataset)
