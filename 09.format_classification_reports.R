@@ -172,6 +172,7 @@ for (file in files) {
       wb, sheet = dataset, type = "colourScale", cols = 3:6, rows = (nrow(df_plankton) + 5):(nrow(df_plankton) + nrow(df_nonplankton) + 4),
       style = c("white", "#A6D8DB"), rule = c(0, 100)
     )
-    
+  }
+  
 # Save the workbook
 saveWorkbook(wb, "perf/classif_reports_supp.xlsx", overwrite = TRUE)

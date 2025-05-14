@@ -82,7 +82,7 @@ my_cols <- c(
 )
 
 
-## Random VS. MobileNet (W & NW) VS. RF (W & NW) ----
+## Figure 2: Random VS. MobileNet (W & NW) VS. RF (W & NW) ----
 #--------------------------------------------------------------------------#
 p2 <- df %>% 
   filter(model %in% c("Random", "Mob + MLP600", "Mob + MLP600 (NW)", "Nat + RF", "Nat + RF (NW)")) %>% 
@@ -152,7 +152,7 @@ df %>%
 
 
 
-## Bigger CNN do not improve classification performance and a smaller CNN performs just as well ----
+## Figure 3: Bigger CNN do not improve classification performance and a smaller CNN performs just as well ----
 #--------------------------------------------------------------------------#
 p3 <- df %>% 
   filter(model %in% c("Mob + MLP600", "Eff S + MLP600", "Eff XL + MLP600", "Mob + MLP50")) %>% 
@@ -186,7 +186,7 @@ p3 <- df %>%
 ggsave(p3, file = "figures/figure_3.png", width = 180, height = 100, unit = "mm", dpi = 300, bg = "white")
 
 
-## Is it the features or the classifier?  ----
+## Figure 4: Is it the features or the classifier?  ----
 #--------------------------------------------------------------------------#
 p4 <- df %>% 
   filter(model %in% c("Mob + MLP600", "Mob + RF", "Mob + PCA + RF", "Nat + RF")) %>% 
@@ -217,7 +217,7 @@ p4 <- df %>%
 ggsave(p4, file = "figures/figure_4.png", width = 180, height = 100, unit = "mm", dpi = 300, bg = "white")
 
 
-## Performance increase, from native RF to deep ----
+## Figure 5: Performance increase, from native RF to deep ----
 #--------------------------------------------------------------------------#
 
 times_100 <- function(x){x * 100}
