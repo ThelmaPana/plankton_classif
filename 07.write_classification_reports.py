@@ -129,12 +129,13 @@ for dataset in datasets:
         # convert to dataframe
         cr = pd.DataFrame(cr).transpose()
         # drop unwanted columns
-        cr = cr.drop(['support'], axis = 1)
+        #cr = cr.drop(['support'], axis = 1)
         # rename columns with model name
         cr = cr.rename(columns={
             'precision': f'precision-{model}',
             'recall': f'recall-{model}',
-            'f1-score': f'f1-{model}'
+            'f1-score': f'f1-{model}',
+            'support': f'n-{model}'
         })
         # move taxon from index to column
         cr = cr.rename_axis('taxon').reset_index()
@@ -161,12 +162,13 @@ for dataset in datasets:
         # convert to dataframe
         cr_g = pd.DataFrame(cr_g).transpose()
         # drop unwanted columns
-        cr_g = cr_g.drop(['support'], axis = 1)
+        #cr_g = cr_g.drop(['support'], axis = 1)
         # rename columns with model name
         cr_g = cr_g.rename(columns={
             'precision': f'precision-{model}',
             'recall': f'recall-{model}',
-            'f1-score': f'f1-{model}'
+            'f1-score': f'f1-{model}',
+            'support': f'n-{model}'
         })
         # move taxon from index to column
         cr_g = cr_g.rename_axis('taxon').reset_index()
