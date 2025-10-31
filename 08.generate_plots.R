@@ -331,3 +331,52 @@ p5 <- df_all %>%
   guides(colour = guide_legend(override.aes = list(linetype = override.linetype))) +
   scale_linetype(guide = "none")
 ggsave(p5, file = "figures/figure_5.png", width = 180, height = 100, unit = "mm", dpi = 300, bg = "white")
+
+
+## Figure S1: CNN learning curve for UVP6 dataset ----
+#--------------------------------------------------------------------------#
+
+## Plot two models for illustration: Mob + MLP600 and Eff S + MLP600
+
+# Path to saved models
+models_dir <- "/home/tpanaiotis/complex/plankton_classif/out/models"
+
+# Read training log for Eff S + MLP600
+df_eff <- read_tsv(file.path(models_dir, "uvp6_effnetv2s", "checkpoints", "training_log.tsv"), show_col_types = FALSE) |> 
+  mutate(mod_name = "Eff S + MLP600") |> 
+  select(mod_name, epoch, val_loss, val_accuracy)
+
+# Read training log for Mob + MLP600
+df_mob <- read_tsv(file.path(models_dir, "uvp6_mobilenet600", "checkpoints", "training_log.tsv"), show_col_types = FALSE) |> 
+  mutate(mod_name = "Mob + MLP600") |> 
+  select(mod_name, epoch, val_loss, val_accuracy)
+
+# Assemble together
+df <- bind_rows(df_eff, df_mob) |> 
+  pivot_longer(val_loss:val_accuracy, names_to = "metric") |> 
+  mutate(metric = str_remove_all(metric, "val_"))
+
+metric_labels <- c(
+  accuracy = "Validation accuracy",
+  loss = "Validation loss"
+)
+
+# And plot
+ps1 <- ggplot(df) +
+  geom_path(aes(x = epoch, y = value, colour = mod_name)) +
+  scale_x_continuous(breaks = c(1:10)) +
+  scale_colour_manual(
+    values = my_cols,
+    labels = c(
+      `Mob + MLP600` = expression(Mob + MLP[600]),
+      `Eff S + MLP600` = expression(Eff~S + MLP[600])
+    )) +
+  labs(x = "Epoch", y = "Value", colour = "Model") +
+  facet_wrap(~metric, scales = "free_y", labeller = labeller(metric = metric_labels)) +
+  theme_classic() +
+  theme(
+    strip.background = element_blank()
+  )
+
+# Save
+ggsave(ps1, file = "figures/figure_s1.png", width = 180, height = 50, unit = "mm", dpi = 300, bg = "white")
