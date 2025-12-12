@@ -227,7 +227,7 @@ times_100 <- function(x){x * 100}
 dataset <- "zooscan"
 
 # Sheet with taxonomy
-taxo <- read_csv("taxonomy_match/Taxonomy match - zooscan.csv")%>% 
+taxo <- read_csv("taxonomy_match/zooscan.csv", show_col_types = FALSE)%>% 
   select(taxon, grouped = level2, plankton)
 
 

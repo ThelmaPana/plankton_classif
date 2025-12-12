@@ -1,0 +1,121 @@
+lineage,taxon,level1,level2,plankton
+/detritus,detritus,detritus,detritus,FALSE
+/living/Eukaryota/Harosa,Harosa,Harosa,Harosa,TRUE
+/living/Eukaryota/Harosa/Alveolata/Myzozoa/Holodinophyta/Dinophyceae/Gonyaulacales/Ceratiaceae/Neoceratium,Neoceratium,Neoceratium,Alveolata,TRUE
+/living/Eukaryota/Harosa/Alveolata/Myzozoa/Holodinophyta/Dinophyceae/Noctilucales/4/Noctilucaceae/Noctiluca,Noctiluca,Noctiluca,Alveolata,TRUE
+/living/Eukaryota/Harosa/Rhizaria/Cercozoa/Thecofilosea/Phaeodaria,Phaeodaria,Phaeodaria,Rhizaria,TRUE
+/living/Eukaryota/Harosa/Rhizaria/Retaria/Foraminifera,Foraminifera,Foraminifera,Rhizaria,TRUE
+/living/Eukaryota/Harosa/Stramenopiles/Ochrophyta/Bacillariophyta/Coscinodiscophytina/Coscinodiscids/Coscinodiscus,Coscinodiscus,Coscinodiscus,Stramenopiles,TRUE
+/living/Eukaryota/Opisthokonta/Holozoa/living/other,other<living,other_living,other_living,FALSE
+/living/Eukaryota/Opisthokonta/Holozoa/Metazoa/Annelida,Annelida,Annelida,Annelida,TRUE
+/living/Eukaryota/Opisthokonta/Holozoa/Metazoa/Annelida/Annelida/larvae,larvae<Annelida,larvae _Annelida,Annelida,TRUE
+/living/Eukaryota/Opisthokonta/Holozoa/Metazoa/Annelida/part,part<Annelida,part_Annelida,Annelida,TRUE
+/living/Eukaryota/Opisthokonta/Holozoa/Metazoa/Annelida/Polychaeta/Errantia/Tomopteridae,Tomopteridae,Tomopteridae,Annelida,TRUE
+/living/Eukaryota/Opisthokonta/Holozoa/Metazoa/Arthropoda/Crustacea/Branchiopoda/Diplostraca/Cladocera/Podonidae/Evadne,Evadne,Evadne,Cladocera,TRUE
+/living/Eukaryota/Opisthokonta/Holozoa/Metazoa/Arthropoda/Crustacea/Branchiopoda/Diplostraca/Cladocera/Podonidae/Podon,Podon,Podon,Cladocera,TRUE
+/living/Eukaryota/Opisthokonta/Holozoa/Metazoa/Arthropoda/Crustacea/Branchiopoda/Diplostraca/Cladocera/Sididae/Penilia,Penilia,Penilia,Cladocera,TRUE
+/living/Eukaryota/Opisthokonta/Holozoa/Metazoa/Arthropoda/Crustacea/Malacostraca/Eumalacostraca,Eumalacostraca,Eumalacostraca,Eumalacostraca,TRUE
+/living/Eukaryota/Opisthokonta/Holozoa/Metazoa/Arthropoda/Crustacea/Malacostraca/Eumalacostraca/Amphipoda,Amphipoda,Amphipoda,Amphipoda,TRUE
+/living/Eukaryota/Opisthokonta/Holozoa/Metazoa/Arthropoda/Crustacea/Malacostraca/Eumalacostraca/Amphipoda/Hyperiidea,Hyperiidea,Hyperiidea,Amphipoda,TRUE
+/living/Eukaryota/Opisthokonta/Holozoa/Metazoa/Arthropoda/Crustacea/Malacostraca/Eumalacostraca/Cumacea,Cumacea,Cumacea,Amphipoda,TRUE
+/living/Eukaryota/Opisthokonta/Holozoa/Metazoa/Arthropoda/Crustacea/Malacostraca/Eumalacostraca/Decapoda/Dendrobranchiata/Penaeoidea/Penaeidae/protozoea,protozoea<Penaeidae,protozoea_Penaeidae,Decapoda,TRUE
+/living/Eukaryota/Opisthokonta/Holozoa/Metazoa/Arthropoda/Crustacea/Malacostraca/Eumalacostraca/Decapoda/Dendrobranchiata/Sergestoidea/Luciferidae/larvae,larvae<Luciferidae,larvae_Luciferidae,Decapoda,TRUE
+/living/Eukaryota/Opisthokonta/Holozoa/Metazoa/Arthropoda/Crustacea/Malacostraca/Eumalacostraca/Decapoda/Dendrobranchiata/Sergestoidea/Sergestidae/protozoea,protozoea<Sergestidae,protozoea_Sergestidae,Decapoda,TRUE
+/living/Eukaryota/Opisthokonta/Holozoa/Metazoa/Arthropoda/Crustacea/Malacostraca/Eumalacostraca/Decapoda/Pleocyemata/Anomura/Galatheidae/zoea,zoea<Galatheidae,zoea_Galatheidae,Decapoda,TRUE
+/living/Eukaryota/Opisthokonta/Holozoa/Metazoa/Arthropoda/Crustacea/Malacostraca/Eumalacostraca/Decapoda/Pleocyemata/Anomura/Porcellanidae/larvae,larvae<Porcellanidae,larvae_Porcellanidae,Decapoda,TRUE
+/living/Eukaryota/Opisthokonta/Holozoa/Metazoa/Arthropoda/Crustacea/Malacostraca/Eumalacostraca/Decapoda/Pleocyemata/Brachyura/megalopa,megalopa,megalopa,Decapoda,TRUE
+/living/Eukaryota/Opisthokonta/Holozoa/Metazoa/Arthropoda/Crustacea/Malacostraca/Eumalacostraca/Decapoda/Pleocyemata/Brachyura/zoea,zoea<Brachyura,zoea_Brachyura,Decapoda,TRUE
+/living/Eukaryota/Opisthokonta/Holozoa/Metazoa/Arthropoda/Crustacea/Malacostraca/Eumalacostraca/Euphausiacea/calyptopsis,calyptopsis,calyptopsis,other_Crustacea,TRUE
+/living/Eukaryota/Opisthokonta/Holozoa/Metazoa/Arthropoda/Crustacea/Malacostraca/Eumalacostraca/Isopoda/Isopoda,Isopoda,Isopoda,Isopoda,TRUE
+/living/Eukaryota/Opisthokonta/Holozoa/Metazoa/Arthropoda/Crustacea/Malacostraca/Eumalacostraca/Mysida,Mysida,Mysida,Eumalacostraca,TRUE
+/living/Eukaryota/Opisthokonta/Holozoa/Metazoa/Arthropoda/Crustacea/Malacostraca/Eumalacostraca/Mysida/Eumalacostraca potentially protozoea,Eumalacostraca potentially protozoea,protozoea_Eumalacostraca,Eumalacostraca,TRUE
+/living/Eukaryota/Opisthokonta/Holozoa/Metazoa/Arthropoda/Crustacea/Malacostraca/Eumalacostraca/Mysida/larvae,larvae<Mysida,larvae_Mysida,Eumalacostraca,TRUE
+/living/Eukaryota/Opisthokonta/Holozoa/Metazoa/Arthropoda/Crustacea/Malacostraca/Hoplocarida/Stomatopoda/larvae,larvae<Stomatopoda,larvae_Stomatopoda,other_Crustacea,TRUE
+/living/Eukaryota/Opisthokonta/Holozoa/Metazoa/Arthropoda/Crustacea/Maxillopoda/Copepoda/Calanoida,Calanoida,Calanoida,Copepoda,TRUE
+/living/Eukaryota/Opisthokonta/Holozoa/Metazoa/Arthropoda/Crustacea/Maxillopoda/Copepoda/Calanoida/Acartiidae,Acartiidae,Acartiidae,Copepoda,TRUE
+/living/Eukaryota/Opisthokonta/Holozoa/Metazoa/Arthropoda/Crustacea/Maxillopoda/Copepoda/Calanoida/Augaptilidae/Haloptilus,Haloptilus,Haloptilus,Copepoda,TRUE
+/living/Eukaryota/Opisthokonta/Holozoa/Metazoa/Arthropoda/Crustacea/Maxillopoda/Copepoda/Calanoida/Calanidae,Calanidae,Calanidae,Copepoda,TRUE
+/living/Eukaryota/Opisthokonta/Holozoa/Metazoa/Arthropoda/Crustacea/Maxillopoda/Copepoda/Calanoida/Candaciidae,Candaciidae,Candaciidae,Copepoda,TRUE
+/living/Eukaryota/Opisthokonta/Holozoa/Metazoa/Arthropoda/Crustacea/Maxillopoda/Copepoda/Calanoida/Centropagidae,Centropagidae,Centropagidae,Copepoda,TRUE
+/living/Eukaryota/Opisthokonta/Holozoa/Metazoa/Arthropoda/Crustacea/Maxillopoda/Copepoda/Calanoida/Eucalanidae,Eucalanidae,Eucalanidae,Copepoda,TRUE
+/living/Eukaryota/Opisthokonta/Holozoa/Metazoa/Arthropoda/Crustacea/Maxillopoda/Copepoda/Calanoida/Euchaetidae,Euchaetidae,Euchaetidae,Copepoda,TRUE
+/living/Eukaryota/Opisthokonta/Holozoa/Metazoa/Arthropoda/Crustacea/Maxillopoda/Copepoda/Calanoida/Heterorhabdidae,Heterorhabdidae,Heterorhabdidae,Copepoda,TRUE
+/living/Eukaryota/Opisthokonta/Holozoa/Metazoa/Arthropoda/Crustacea/Maxillopoda/Copepoda/Calanoida/Metridinidae,Metridinidae,Metridinidae,Copepoda,TRUE
+/living/Eukaryota/Opisthokonta/Holozoa/Metazoa/Arthropoda/Crustacea/Maxillopoda/Copepoda/Calanoida/Paracalanidae/Calocalanus/Calocalanus pavo,Calocalanus pavo,Calocalanus pavo,Copepoda,TRUE
+/living/Eukaryota/Opisthokonta/Holozoa/Metazoa/Arthropoda/Crustacea/Maxillopoda/Copepoda/Calanoida/Pontellidae,Pontellidae,Pontellidae,Copepoda,TRUE
+/living/Eukaryota/Opisthokonta/Holozoa/Metazoa/Arthropoda/Crustacea/Maxillopoda/Copepoda/Calanoida/Rhincalanidae,Rhincalanidae,Rhincalanidae,Copepoda,TRUE
+/living/Eukaryota/Opisthokonta/Holozoa/Metazoa/Arthropoda/Crustacea/Maxillopoda/Copepoda/Calanoida/Temoridae,Temoridae,Temoridae,Copepoda,TRUE
+/living/Eukaryota/Opisthokonta/Holozoa/Metazoa/Arthropoda/Crustacea/Maxillopoda/Copepoda/Cyclopoida/Oithonidae,Oithonidae,Oithonidae,Copepoda,TRUE
+/living/Eukaryota/Opisthokonta/Holozoa/Metazoa/Arthropoda/Crustacea/Maxillopoda/Copepoda/Harpacticoida,Harpacticoida,Harpacticoida,Copepoda,TRUE
+/living/Eukaryota/Opisthokonta/Holozoa/Metazoa/Arthropoda/Crustacea/Maxillopoda/Copepoda/Poecilostomatoida/Corycaeidae,Corycaeidae,Corycaeidae,Copepoda,TRUE
+/living/Eukaryota/Opisthokonta/Holozoa/Metazoa/Arthropoda/Crustacea/Maxillopoda/Copepoda/Poecilostomatoida/Oncaeidae,Oncaeidae,Oncaeidae,Copepoda,TRUE
+/living/Eukaryota/Opisthokonta/Holozoa/Metazoa/Arthropoda/Crustacea/Maxillopoda/Copepoda/Poecilostomatoida/Sapphirinidae,Sapphirinidae,Sapphirinidae,Copepoda,TRUE
+/living/Eukaryota/Opisthokonta/Holozoa/Metazoa/Arthropoda/Crustacea/Maxillopoda/Copepoda/Poecilostomatoida/Sapphirinidae/Copilia,Copilia,Copilia,Copepoda,TRUE
+/living/Eukaryota/Opisthokonta/Holozoa/Metazoa/Arthropoda/Crustacea/Maxillopoda/Thecostraca/Cirripedia/cirrus,cirrus,cirrus,Cirripedia,TRUE
+/living/Eukaryota/Opisthokonta/Holozoa/Metazoa/Arthropoda/Crustacea/Maxillopoda/Thecostraca/Cirripedia/cypris,cypris,cypris,Cirripedia,TRUE
+/living/Eukaryota/Opisthokonta/Holozoa/Metazoa/Arthropoda/Crustacea/Maxillopoda/Thecostraca/Cirripedia/nauplii,nauplii<Cirripedia,nauplii_Cirripedia,Cirripedia,TRUE
+/living/Eukaryota/Opisthokonta/Holozoa/Metazoa/Arthropoda/Crustacea/metanauplii,metanauplii<Crustacea,metanauplii_Crustacea,other_Crustacea,TRUE
+/living/Eukaryota/Opisthokonta/Holozoa/Metazoa/Arthropoda/Crustacea/nauplii,nauplii<Crustacea,nauplii_Crustacea,other_Crustacea,TRUE
+/living/Eukaryota/Opisthokonta/Holozoa/Metazoa/Arthropoda/Crustacea/Oligostraca/Ostracoda,Ostracoda,Ostracoda,other_Crustacea,TRUE
+/living/Eukaryota/Opisthokonta/Holozoa/Metazoa/Arthropoda/Crustacea/part,part<Crustacea,part_Crustacea,other_Crustacea,TRUE
+/living/Eukaryota/Opisthokonta/Holozoa/Metazoa/Arthropoda/Hexapoda/Insecta,Insecta,Insecta,Insecta,FALSE
+/living/Eukaryota/Opisthokonta/Holozoa/Metazoa/Bryozoa/cyphonaute,cyphonaute,cyphonaute,cyphonaute,TRUE
+/living/Eukaryota/Opisthokonta/Holozoa/Metazoa/Chaetognatha,Chaetognatha,Chaetognatha,Chaetognatha,TRUE
+/living/Eukaryota/Opisthokonta/Holozoa/Metazoa/Chaetognatha/head,head<Chaetognatha,head_Chaetognatha,Chaetognatha,TRUE
+/living/Eukaryota/Opisthokonta/Holozoa/Metazoa/Chaetognatha/tail,tail<Chaetognatha,tail_Chaetognatha,Chaetognatha,TRUE
+/living/Eukaryota/Opisthokonta/Holozoa/Metazoa/Chordata/Craniata/Vertebrata/Gnathostomata/Actinopterygii,Actinopterygii,Actinopterygii,Actinopterygii,TRUE
+/living/Eukaryota/Opisthokonta/Holozoa/Metazoa/Chordata/Craniata/Vertebrata/Gnathostomata/Actinopterygii/egg,egg<Actinopterygii,egg_Actinopterygii,Actinopterygii,TRUE
+/living/Eukaryota/Opisthokonta/Holozoa/Metazoa/Chordata/Tunicata/Appendicularia/Fritillariidae,Fritillariidae,Fritillariidae,Appendicularia,TRUE
+/living/Eukaryota/Opisthokonta/Holozoa/Metazoa/Chordata/Tunicata/Appendicularia/Oikopleuridae,Oikopleuridae,Oikopleuridae,Appendicularia,TRUE
+/living/Eukaryota/Opisthokonta/Holozoa/Metazoa/Chordata/Tunicata/Appendicularia/tail,tail<Appendicularia,tail_Appendicularia,Appendicularia,TRUE
+/living/Eukaryota/Opisthokonta/Holozoa/Metazoa/Chordata/Tunicata/Appendicularia/trunk,trunk,trunk_Appendicularia,Appendicularia,TRUE
+/living/Eukaryota/Opisthokonta/Holozoa/Metazoa/Chordata/Tunicata/Thaliacea/Doliolida,Doliolida,Doliolida,Doliolida,TRUE
+/living/Eukaryota/Opisthokonta/Holozoa/Metazoa/Chordata/Tunicata/Thaliacea/Pyrosomatida,Pyrosomatida,Pyrosomatida,Pyrosomatida,TRUE
+/living/Eukaryota/Opisthokonta/Holozoa/Metazoa/Chordata/Tunicata/Thaliacea/Salpida,Salpida,Salpida,Salpida,TRUE
+/living/Eukaryota/Opisthokonta/Holozoa/Metazoa/Chordata/Tunicata/Thaliacea/Salpida/juvenile,juvenile<Salpida,juvenile_Salpida,Salpida,TRUE
+/living/Eukaryota/Opisthokonta/Holozoa/Metazoa/Chordata/Tunicata/Thaliacea/Salpida/Salpidae/endostyle,endostyle,endostyle,Salpida,TRUE
+/living/Eukaryota/Opisthokonta/Holozoa/Metazoa/Chordata/Tunicata/Thaliacea/Salpida/Salpidae/nucleus,nucleus,nucleus,Salpida,TRUE
+/living/Eukaryota/Opisthokonta/Holozoa/Metazoa/Cnidaria/Anthozoa/Hexacorallia/Actiniaria,Actiniaria,Actiniaria,other_Cnidaria,TRUE
+/living/Eukaryota/Opisthokonta/Holozoa/Metazoa/Cnidaria/Hydrozoa,Hydrozoa,Hydrozoa,other_Cnidaria,TRUE
+/living/Eukaryota/Opisthokonta/Holozoa/Metazoa/Cnidaria/Hydrozoa/Hydroidolina/Leptothecata/Campanulariidae/Obelia,Obelia,Obelia,other_Cnidaria,TRUE
+/living/Eukaryota/Opisthokonta/Holozoa/Metazoa/Cnidaria/Hydrozoa/Hydroidolina/Siphonophorae/Calycophorae/Abylidae/Abylopsis/Abylopsis tetragona/bract,bract<Abylopsis tetragona,bract_Abylopsis tetragona,Siphonophorae,TRUE
+/living/Eukaryota/Opisthokonta/Holozoa/Metazoa/Cnidaria/Hydrozoa/Hydroidolina/Siphonophorae/Calycophorae/Abylidae/Abylopsis/Abylopsis tetragona/eudoxie,eudoxie<Abylopsis tetragona,eudoxie_Abylopsis tetragona,Siphonophorae,TRUE
+/living/Eukaryota/Opisthokonta/Holozoa/Metazoa/Cnidaria/Hydrozoa/Hydroidolina/Siphonophorae/Calycophorae/Abylidae/Abylopsis/Abylopsis tetragona/gonophore,gonophore<Abylopsis tetragona,gonophore_Abylopsis tetragona,Siphonophorae,TRUE
+/living/Eukaryota/Opisthokonta/Holozoa/Metazoa/Cnidaria/Hydrozoa/Hydroidolina/Siphonophorae/Calycophorae/Abylidae/Abylopsis/Abylopsis tetragona/nectophore,nectophore<Abylopsis tetragona,nectophore_Abylopsis tetragona,Siphonophorae,TRUE
+/living/Eukaryota/Opisthokonta/Holozoa/Metazoa/Cnidaria/Hydrozoa/Hydroidolina/Siphonophorae/Calycophorae/Abylidae/Bassia/Bassia,Bassia,Bassia,Siphonophorae,TRUE
+/living/Eukaryota/Opisthokonta/Holozoa/Metazoa/Cnidaria/Hydrozoa/Hydroidolina/Siphonophorae/Calycophorae/Diphyidae/bract,bract<Diphyidae,bract_Diphyidae,Siphonophorae,TRUE
+/living/Eukaryota/Opisthokonta/Holozoa/Metazoa/Cnidaria/Hydrozoa/Hydroidolina/Siphonophorae/Calycophorae/Diphyidae/eudoxie,eudoxie<Diphyidae,eudoxie_Diphyidae,Siphonophorae,TRUE
+/living/Eukaryota/Opisthokonta/Holozoa/Metazoa/Cnidaria/Hydrozoa/Hydroidolina/Siphonophorae/Calycophorae/Diphyidae/gonophore,gonophore<Diphyidae,gonophore_Diphyidae,Siphonophorae,TRUE
+/living/Eukaryota/Opisthokonta/Holozoa/Metazoa/Cnidaria/Hydrozoa/Hydroidolina/Siphonophorae/Calycophorae/Diphyidae/nectophore,nectophore<Diphyidae,nectophore_Diphyidae,Siphonophorae,TRUE
+/living/Eukaryota/Opisthokonta/Holozoa/Metazoa/Cnidaria/Hydrozoa/Hydroidolina/Siphonophorae/Calycophorae/Hippopodiidae/nectophore,nectophore<Hippopodiidae,nectophore_Hippopodiidae,Siphonophorae,TRUE
+/living/Eukaryota/Opisthokonta/Holozoa/Metazoa/Cnidaria/Hydrozoa/Hydroidolina/Siphonophorae/part,part<Siphonophorae,part_Siphonophorae,Siphonophorae,TRUE
+/living/Eukaryota/Opisthokonta/Holozoa/Metazoa/Cnidaria/Hydrozoa/Hydroidolina/Siphonophorae/Physonectae,Physonectae,Physonectae,Siphonophorae,TRUE
+/living/Eukaryota/Opisthokonta/Holozoa/Metazoa/Cnidaria/Hydrozoa/Hydroidolina/Siphonophorae/Physonectae/nectophore,nectophore<Physonectae,nectophore_Physonectae,Siphonophorae,TRUE
+/living/Eukaryota/Opisthokonta/Holozoa/Metazoa/Cnidaria/Hydrozoa/Hydroidolina/Siphonophorae/Physonectae/siphonula,siphonula,siphonula,Siphonophorae,TRUE
+/living/Eukaryota/Opisthokonta/Holozoa/Metazoa/Cnidaria/Hydrozoa/Trachylina/Narcomedusae/Aeginidae/Solmundella/Solmundella bitentaculata,Solmundella bitentaculata,Solmundella bitentaculata,Trachylina,TRUE
+/living/Eukaryota/Opisthokonta/Holozoa/Metazoa/Cnidaria/Hydrozoa/Trachylina/Narcomedusae/Aeginidae/Solmundella/Solmundella bitentaculata/actinula,actinula<Solmundella bitentaculata,actinula,Trachylina,TRUE
+/living/Eukaryota/Opisthokonta/Holozoa/Metazoa/Cnidaria/Hydrozoa/Trachylina/Trachymedusae/Geryoniidae/Liriope,Liriope<Geryoniidae,Liriope,Trachylina,TRUE
+/living/Eukaryota/Opisthokonta/Holozoa/Metazoa/Cnidaria/Hydrozoa/Trachylina/Trachymedusae/Rhopalonematidae/Aglaura,Aglaura,Aglaura,Trachylina,TRUE
+/living/Eukaryota/Opisthokonta/Holozoa/Metazoa/Cnidaria/Hydrozoa/Trachylina/Trachymedusae/Rhopalonematidae/Rhopalonema/Rhopalonema velatum,Rhopalonema velatum,Rhopalonema velatum,Trachylina,TRUE
+/living/Eukaryota/Opisthokonta/Holozoa/Metazoa/Cnidaria/part,part<Cnidaria,part_Cnidaria,other_Cnidaria,TRUE
+/living/Eukaryota/Opisthokonta/Holozoa/Metazoa/Cnidaria/Scyphozoa/ephyra,ephyra,ephyra,other_Cnidaria,TRUE
+/living/Eukaryota/Opisthokonta/Holozoa/Metazoa/Ctenophora,Ctenophora,Ctenophora,Ctenophora,TRUE
+/living/Eukaryota/Opisthokonta/Holozoa/Metazoa/Echinodermata/Echinoidea/pluteus,pluteus<Echinoidea,pluteus_Echinoidea,Echinodermata,TRUE
+/living/Eukaryota/Opisthokonta/Holozoa/Metazoa/Echinodermata/larvae,larvae<Echinodermata,larvae_Echinodermata,Echinodermata,TRUE
+/living/Eukaryota/Opisthokonta/Holozoa/Metazoa/Echinodermata/Ophiuroidea/pluteus,pluteus<Ophiuroidea,pluteus_Ophiuroidea,Echinodermata,TRUE
+/living/Eukaryota/Opisthokonta/Holozoa/Metazoa/Mollusca/Bivalvia,Bivalvia<Mollusca,Bivalvia,Mollusca,TRUE
+/living/Eukaryota/Opisthokonta/Holozoa/Metazoa/Mollusca/egg,egg<Mollusca,egg_Mollusca,Mollusca,TRUE
+/living/Eukaryota/Opisthokonta/Holozoa/Metazoa/Mollusca/Gastropoda/Atlanta,Atlanta,Atlanta,Mollusca,TRUE
+/living/Eukaryota/Opisthokonta/Holozoa/Metazoa/Mollusca/Gastropoda/Heterobranchia/Euthyneura/Euopisthobranchia/Gymnosomata,Gymnosomata,Gymnosomata,Mollusca,TRUE
+/living/Eukaryota/Opisthokonta/Holozoa/Metazoa/Mollusca/Gastropoda/Heterobranchia/Euthyneura/Euopisthobranchia/Thecosomata/Cavoliniidae/Cavolinia/Cavolinia inflexa,Cavolinia inflexa,Cavolinia inflexa,Mollusca,TRUE
+/living/Eukaryota/Opisthokonta/Holozoa/Metazoa/Mollusca/Gastropoda/Heterobranchia/Euthyneura/Euopisthobranchia/Thecosomata/Creseidae,Creseidae,Creseidae,Mollusca,TRUE
+/living/Eukaryota/Opisthokonta/Holozoa/Metazoa/Mollusca/Gastropoda/Heterobranchia/Euthyneura/Euopisthobranchia/Thecosomata/Creseidae/Creseis/Creseis acicula,Creseis acicula,Creseidae acicula,Mollusca,TRUE
+/living/Eukaryota/Opisthokonta/Holozoa/Metazoa/Mollusca/Gastropoda/Heterobranchia/Euthyneura/Euopisthobranchia/Thecosomata/Cymbulia peroni,Cymbulia peroni,Cymbulia peroni,Mollusca,TRUE
+/living/Eukaryota/Opisthokonta/Holozoa/Metazoa/Mollusca/Gastropoda/Heterobranchia/Euthyneura/Euopisthobranchia/Thecosomata/Limacinidae,Limacinidae,Limacinidae,Mollusca,TRUE
+/living/Eukaryota/Opisthokonta/Holozoa/Metazoa/Mollusca/part,part<Mollusca,part_Mollusca,Mollusca,TRUE
+/living/other/egg,egg<other,other_egg,other_egg,FALSE
+/living/other/seaweed,seaweed,seaweed,seaweed,FALSE
+/not-living/artefact,artefact,artefact,artefact,FALSE
+/not-living/artefact/badfocus,badfocus<artefact,badfocus,badfocus,FALSE
+/not-living/artefact/bubble,bubble,bubble,bubble,FALSE
+/not-living/detritus/fiber,fiber<detritus,fiber,fiber,FALSE

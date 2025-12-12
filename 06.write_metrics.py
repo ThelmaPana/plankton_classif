@@ -32,17 +32,12 @@ df_all = pd.DataFrame()
 
 # List datasets and groups for each dataset
 datasets = ['flowcam', 'ifcb', 'isiis', 'uvp6', 'zoocam', 'zooscan']
-## Sheet is "Taxonomy match"
-sheet_id = '11_I-CZEVQTQqMwLuAI0N6m1RX8nWKE9ml8AgPtaCTcc'
 
 
 for dataset in datasets:
     
-    # Generate sheet url
-    sheet_name = dataset
-    url = f'https://docs.google.com/spreadsheets/d/{sheet_id}/gviz/tq?tqx=out:csv&sheet={sheet_name}'
-    # Reed sheet
-    df = pd.read_csv(url, usecols=['taxon', 'level2', 'plankton'])
+    # Reed taxonomy match file
+    df = pd.read_csv(f'taxonomy_match/{dataset}.csv', usecols=['taxon', 'level2', 'plankton'])
     
     # Add name of dataset
     df['dataset'] = dataset

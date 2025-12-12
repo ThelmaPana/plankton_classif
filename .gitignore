@@ -9,3 +9,4 @@ figures
 old/
 draft/
 perf/
+*.DS_Store
