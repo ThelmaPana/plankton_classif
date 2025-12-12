@@ -7,6 +7,7 @@
 
 library(tidyverse)
 library(ggpattern)
+library(patchwork)
 library(chroma)
 
 
@@ -380,3 +381,44 @@ ps1 <- ggplot(df) +
 
 # Save
 ggsave(ps1, file = "figures/figure_s1.png", width = 180, height = 50, unit = "mm", dpi = 300, bg = "white")
+
+
+## Figure S2: F1 vs accuracy ----
+#--------------------------------------------------------------------------#
+# F1 micro VS accuracy
+ps2a <- df %>% 
+  filter(metric %in% c("accuracy", "f1_micro")) |> 
+  select(model:score) |> 
+  pivot_wider(names_from = metric, values_from = score) |> 
+  ggplot() +
+  geom_abline(slope = 1, intercept = 0, colour = "grey20", linetype = "dotted") +
+  geom_point(aes(x = accuracy, y = f1_micro, colour = model, shape = dataset), size = 2) +
+  scale_colour_manual(values = my_cols) +
+  xlim(c(0,1)) + ylim(c(0,1)) +
+  labs(x = "Accuracy", y = "F1 micro", colour = "Model", shape = "Dataset") +
+  coord_fixed() +
+  theme_classic() +
+  theme(text = element_text(size = 10, family = "Helvetica"))
+
+# F1 macro VS balanced accuracy
+ps2b <- df %>% 
+  filter(metric %in% c("balanced_accuracy", "f1_macro")) |> 
+  select(model:score) |> 
+  pivot_wider(names_from = metric, values_from = score) |> 
+  ggplot() +
+  geom_abline(slope = 1, intercept = 0, colour = "grey20", linetype = "dotted") +
+  geom_point(aes(x = balanced_accuracy, y = f1_macro, colour = model, shape = dataset), size = 2) +
+  scale_colour_manual(values = my_cols) +
+  xlim(c(0,1)) + ylim(c(0,1)) +
+  labs(x = "Balanced accuracy", y = "F1 macro", colour = "Model", shape = "Dataset") +
+  coord_fixed() +
+  theme_classic() +
+  theme(text = element_text(size = 10, family = "Helvetica"))
+
+ps2 <- ps2a + ps2b + plot_layout(guides = 'collect') & theme(
+  legend.position = 'bottom',
+  legend.direction = "vertical"
+)
+
+# Save
+ggsave(ps2, file = "figures/figure_s2.png", width = 180, height = 160, unit = "mm", dpi = 300, bg = "white")

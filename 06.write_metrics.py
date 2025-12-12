@@ -11,7 +11,7 @@ import glob
 import pandas as pd
 import numpy as np
 import os
-from sklearn.metrics import accuracy_score, balanced_accuracy_score, precision_score, recall_score
+from sklearn.metrics import accuracy_score, balanced_accuracy_score, precision_score, recall_score, f1_score
 from sklearn.utils import shuffle
 import argparse
 
@@ -29,7 +29,6 @@ os.makedirs(save_dir, exist_ok=True)
 ## Get detailed and group classes for all datasets
 # Initiate empty dataframe
 df_all = pd.DataFrame()
-
 
 # List datasets and groups for each dataset
 datasets = ['flowcam', 'ifcb', 'isiis', 'uvp6', 'zoocam', 'zooscan']
@@ -74,10 +73,14 @@ metrics = {
     'model': [],
     'accuracy': [],
     'balanced_accuracy': [],
+    'f1_macro': [],
+    'f1_micro': [],
     'plankton_precision': [],
     'plankton_recall': [],
     'accuracy_g': [],
     'balanced_accuracy_g': [],
+    'f1_macro_g': [],
+    'f1_micro_g': [],
     'plankton_precision_g': [],
     'plankton_recall_g': []
 }
@@ -113,9 +116,11 @@ for file in files:
     plankton_classes = list(set(df_ref[df_ref['plankton']]['taxon'].tolist()))
     plankton_classes_g = list(set(df_ref[df_ref['plankton']]['grouped'].tolist()))
     
-    # Compute grouped metrics
+    # Compute detailed metrics
     metrics['accuracy'].append(accuracy_score(y, y_pred))
     metrics['balanced_accuracy'].append(balanced_accuracy_score(y, y_pred))
+    metrics['f1_macro'].append(f1_score(y, y_pred, average = 'macro'))
+    metrics['f1_micro'].append(f1_score(y, y_pred, average = 'micro'))
     metrics['plankton_precision'].append(precision_score(y, y_pred, labels=plankton_classes, average='weighted', zero_division=0))
     metrics['plankton_recall'].append(recall_score(y, y_pred, labels=plankton_classes, average='weighted', zero_division=0))
     
@@ -131,6 +136,8 @@ for file in files:
     # Compute grouped metrics
     metrics['accuracy_g'].append(accuracy_score(y_g, y_pred_g))
     metrics['balanced_accuracy_g'].append(balanced_accuracy_score(y_g, y_pred_g))
+    metrics['f1_macro_g'].append(f1_score(y_g, y_pred_g, average = 'macro'))
+    metrics['f1_micro_g'].append(f1_score(y_g, y_pred_g, average = 'micro'))
     metrics['plankton_precision_g'].append(precision_score(y_g, y_pred_g, labels=plankton_classes_g, average='weighted', zero_division=0))
     metrics['plankton_recall_g'].append(recall_score(y_g, y_pred_g, labels=plankton_classes_g, average='weighted', zero_division=0))
     
@@ -147,6 +154,8 @@ for file in files:
         # Compute detailed metrics
         metrics['accuracy'].append(accuracy_score(y_rand, y_pred))
         metrics['balanced_accuracy'].append(balanced_accuracy_score(y_rand, y_pred))
+        metrics['f1_macro'].append(f1_score(y, y_pred, average = 'macro'))
+        metrics['f1_micro'].append(f1_score(y, y_pred, average = 'micro'))
         metrics['plankton_precision'].append(precision_score(y_rand, y_pred, labels=plankton_classes, average='weighted', zero_division=0))
         metrics['plankton_recall'].append(recall_score(y_rand, y_pred, labels=plankton_classes, average='weighted', zero_division=0))
         
@@ -156,6 +165,8 @@ for file in files:
         # Compute detailed metrics
         metrics['accuracy_g'].append(accuracy_score(y_rand_g, y_pred_g))
         metrics['balanced_accuracy_g'].append(balanced_accuracy_score(y_rand_g, y_pred_g))
+        metrics['f1_macro_g'].append(f1_score(y_g, y_pred_g, average = 'macro'))
+        metrics['f1_micro_g'].append(f1_score(y_g, y_pred_g, average = 'micro'))
         metrics['plankton_precision_g'].append(precision_score(y_rand_g, y_pred_g, labels=plankton_classes, average='weighted', zero_division=0))
         metrics['plankton_recall_g'].append(recall_score(y_rand_g, y_pred_g, labels=plankton_classes, average='weighted', zero_division=0))
         
