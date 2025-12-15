@@ -149,8 +149,8 @@ for file in files:
         # Compute detailed metrics
         metrics['accuracy'].append(accuracy_score(y_rand, y_pred))
         metrics['balanced_accuracy'].append(balanced_accuracy_score(y_rand, y_pred))
-        metrics['f1_macro'].append(f1_score(y, y_pred, average = 'macro'))
-        metrics['f1_micro'].append(f1_score(y, y_pred, average = 'micro'))
+        metrics['f1_macro'].append(f1_score(y_rand, y_pred, average = 'macro'))
+        metrics['f1_micro'].append(f1_score(y_rand, y_pred, average = 'micro'))
         metrics['plankton_precision'].append(precision_score(y_rand, y_pred, labels=plankton_classes, average='weighted', zero_division=0))
         metrics['plankton_recall'].append(recall_score(y_rand, y_pred, labels=plankton_classes, average='weighted', zero_division=0))
         
@@ -160,8 +160,8 @@ for file in files:
         # Compute detailed metrics
         metrics['accuracy_g'].append(accuracy_score(y_rand_g, y_pred_g))
         metrics['balanced_accuracy_g'].append(balanced_accuracy_score(y_rand_g, y_pred_g))
-        metrics['f1_macro_g'].append(f1_score(y_g, y_pred_g, average = 'macro'))
-        metrics['f1_micro_g'].append(f1_score(y_g, y_pred_g, average = 'micro'))
+        metrics['f1_macro_g'].append(f1_score(y_rand_g, y_pred_g, average = 'macro'))
+        metrics['f1_micro_g'].append(f1_score(y_rand_g, y_pred_g, average = 'micro'))
         metrics['plankton_precision_g'].append(precision_score(y_rand_g, y_pred_g, labels=plankton_classes, average='weighted', zero_division=0))
         metrics['plankton_recall_g'].append(recall_score(y_rand_g, y_pred_g, labels=plankton_classes, average='weighted', zero_division=0))
         
